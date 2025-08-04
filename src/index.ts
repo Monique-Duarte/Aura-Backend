@@ -1,8 +1,9 @@
-import { onSchedule } from "firebase-functions/v2/scheduler";
+import {onSchedule} from "firebase-functions/v2/scheduler";
+import * as functions from "firebase-functions";
 import * as logger from "firebase-functions/logger";
 import * as admin from "firebase-admin";
 
-// Inicializa o app do Firebase Admin para ter acesso ao Firestore
+// Inicializa o app do Firebase Admin uma única vez
 admin.initializeApp();
 const db = admin.firestore();
 
@@ -94,3 +95,69 @@ export const createRecurringTransactions = onSchedule(
     }
   }
 );
+
+export const onUserDeleted = functions.auth.user().onDelete(async (user) => {
+  const uid = user.uid;
+  logger.info(`Iniciando a exclusão dos dados para o utilizador: ${uid}`);
+
+  try {
+    const userDocRef = db.doc(`users/${uid}`);
+
+    const subcollections = [
+      "transactions",
+      "cards",
+      "categories",
+      "reserves",
+      "settings",
+    ];
+
+    const promises = subcollections.map((subcollection) => {
+      const path = `users/${uid}/${subcollection}`;
+      logger.info(`Agendando exclusão da subcoleção em: ${path}`);
+      return deleteCollectionByPath(path);
+    });
+
+    await Promise.all(promises);
+    logger.info(`Todas as subcoleções do utilizador ${uid} foram excluídas.`);
+
+    await userDocRef.delete();
+    logger.info(`Documento principal do utilizador ${uid} foi excluído.`);
+    
+    const partnershipsRef = db.collection("partnerships");
+    const partnershipsQuery = partnershipsRef.where("members", "array-contains", uid);
+    const partnershipsSnapshot = await partnershipsQuery.get();
+    
+    if (!partnershipsSnapshot.empty) {
+      const batch = db.batch();
+      partnershipsSnapshot.forEach(doc => {
+        logger.info(`Excluindo parceria ${doc.id}`);
+        batch.delete(doc.ref);
+      });
+      await batch.commit();
+      logger.info(`Parcerias do utilizador ${uid} foram excluídas.`);
+    }
+
+    logger.info(`Limpeza completa para o utilizador ${uid} finalizada com sucesso.`);
+    return null;
+
+  } catch (error) {
+    logger.error(`Erro ao excluir dados do utilizador ${uid}:`, error);
+    return null;
+  }
+});
+
+
+async function deleteCollectionByPath(collectionPath: string, batchSize: number = 100) {
+  const collectionRef = db.collection(collectionPath);
+  const query = collectionRef.orderBy("__name__").limit(batchSize);
+
+  let snapshot = await query.get();
+  while (snapshot.size > 0) {
+    const batch = db.batch();
+    snapshot.docs.forEach((doc) => {
+      batch.delete(doc.ref);
+    });
+    await batch.commit();
+    snapshot = await query.get();
+  }
+}
