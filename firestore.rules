@@ -1,0 +1,20 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // Regra para a coleção de parcerias
+    // Permite ler, escrever ou apagar um documento de parceria APENAS SE
+    // o ID do utilizador autenticado estiver no campo 'members' desse documento.
+    match /partnerships/{partnershipId} {
+      allow read, write, delete: if request.auth != null && request.auth.uid in resource.data.members;
+    }
+
+    // Regra para os dados privados de cada utilizador
+    // Permite que um utilizador leia e escreva apenas nos seus próprios documentos.
+    match /users/{userId}/{document=**} {
+      allow read, write: if request.auth != null && request.auth.uid == userId;
+    }
+
+  }
+}
