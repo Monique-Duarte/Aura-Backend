@@ -126,28 +126,45 @@ export const onUserDeletedFunction = functions.auth.user().onDelete(
 /**
  * Função Chamável que verifica se um e-mail existe no Firebase Auth.
  */
-export const checkIfEmailExists = onCall((request) => {
+export const checkIfEmailExists = onCall(async (request) => {
   const email = request.data.email;
 
   if (!email || typeof email !== "string") {
+    logger.error("Email inválido fornecido:", email);
     throw new HttpsError(
       "invalid-argument",
-      "O e-mail é obrigatório.",
+      "O e-mail é obrigatório e deve ser uma string válida.",
     );
   }
 
-  return admin.auth().getUserByEmail(email)
-    .then(() => {
-      return {exists: true};
-    })
-    .catch((error) => {
-      if (error.code === "auth/user-not-found") {
-        return {exists: false};
-      }
+  try {
+    logger.info(`Verificando se o email existe: ${email}`);
+    await admin.auth().getUserByEmail(email);
+    logger.info(`Email encontrado: ${email}`);
+    return {exists: true};
+  } catch (error: any) {
+    logger.info(`Erro ao buscar email ${email}:`, error.code);
+
+    if (error.code === "auth/user-not-found") {
+      logger.info(`Email não encontrado: ${email}`);
+      return {exists: false};
+    }
+
+    if (error.code === "auth/invalid-email") {
+      logger.error(`Email com formato inválido: ${email}`);
       throw new HttpsError(
-        "internal", "Ocorreu um erro ao verificar o e-mail.", error
+        "invalid-argument",
+        "O formato do e-mail é inválido.",
       );
-    });
+    }
+
+    logger.error(`Erro interno ao verificar email ${email}:`, error);
+    throw new HttpsError(
+      "internal",
+      "Ocorreu um erro interno ao verificar o e-mail. Tente novamente.",
+      error
+    );
+  }
 });
 
 /**
