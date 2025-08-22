@@ -1,22 +1,23 @@
 import {onSchedule} from "firebase-functions/v2/scheduler";
+import {onCall, HttpsError} from "firebase-functions/v2/https";
 import * as functions from "firebase-functions";
 import * as logger from "firebase-functions/logger";
 import * as admin from "firebase-admin";
+import {QueryDocumentSnapshot} from "firebase-admin/firestore";
 
 // Inicializa o app do Firebase Admin uma única vez
 admin.initializeApp();
 const db = admin.firestore();
 
 /**
- * Cloud Function agendada (v2) para rodar todos os dias à 1 da manhã.
- * Ela cria transações recorrentes (rendas e despesas) para os usuários.
+ * Cria transações recorrentes para os usuários diariamente.
  */
 export const createRecurringTransactions = onSchedule(
   {
     schedule: "every day 01:00",
     timeZone: "America/Sao_Paulo",
   },
-  async (event) => {
+  async () => { // Removido o parâmetro 'event' não utilizado
     logger.info("Iniciando a criação de transações recorrentes...");
 
     const today = new Date();
@@ -29,11 +30,8 @@ export const createRecurringTransactions = onSchedule(
 
       for (const userDoc of usersSnapshot.docs) {
         const userId = userDoc.id;
-        logger.info(`Processando usuário: ${userId}`);
-
         const recurringTxQuery = db
-          .collection("users")
-          .doc(userId)
+          .collection("users").doc(userId)
           .collection("transactions")
           .where("isRecurring", "==", true)
           .where("recurringDay", "==", currentDay);
@@ -41,22 +39,16 @@ export const createRecurringTransactions = onSchedule(
         const recurringTxSnapshot = await recurringTxQuery.get();
 
         if (recurringTxSnapshot.empty) {
-          logger.info(
-            `Nenhuma transação recorrente para o dia ${currentDay}.`
-          );
           continue;
         }
 
         for (const recurringDoc of recurringTxSnapshot.docs) {
           const recurringData = recurringDoc.data();
           const description = recurringData.description || "Transação";
-
           const startDate = new Date(currentYear, currentMonth, 1);
           const endDate = new Date(currentYear, currentMonth + 1, 0);
 
-          const checkExistingQuery = db
-            .collection("users")
-            .doc(userId)
+          const checkExistingQuery = db.collection("users").doc(userId)
             .collection("transactions")
             .where("recurringSourceId", "==", recurringDoc.id)
             .where("date", ">=", startDate)
@@ -65,26 +57,19 @@ export const createRecurringTransactions = onSchedule(
           const existingSnapshot = await checkExistingQuery.get();
 
           if (existingSnapshot.empty) {
-            const newTransactionData: { [key: string]: any } = {
-              ...recurringData,
+            // eslint-disable-next-line @typescript-eslint/no-unused-vars
+            const {recurringDay, ...baseTransaction} = recurringData;
+            const newTransactionData = {
+              ...baseTransaction,
               date: admin.firestore.Timestamp.fromDate(new Date()),
               isRecurring: false,
               recurringSourceId: recurringDoc.id,
             };
-            delete newTransactionData.recurringDay;
 
-            await db
-              .collection("users")
-              .doc(userId)
-              .collection("transactions")
-              .add(newTransactionData);
-
+            await db.collection("users").doc(userId)
+              .collection("transactions").add(newTransactionData);
             logger.info(
-              `Transação "${description}" criada para o usuário ${userId}.`
-            );
-          } else {
-            logger.info(
-              `Transação "${description}" já existe para este mês.`
+              `Transação "${description}" criada para o usuário ${userId}.`,
             );
           }
         }
@@ -93,68 +78,91 @@ export const createRecurringTransactions = onSchedule(
     } catch (error) {
       logger.error("Erro no processo de transações:", error);
     }
+  },
+);
+
+/**
+ * Gatilho que apaga todos os dados de um usuário quando ele é deletado do Auth.
+ */
+export const onUserDeletedFunction = functions.auth.user().onDelete(
+  async (user: functions.auth.UserRecord) => {
+    const uid = user.uid;
+    logger.info(`Iniciando a exclusão dos dados para o usuário: ${uid}`);
+
+    try {
+      const userDocRef = db.doc(`users/${uid}`);
+      const subcollections = [
+        "transactions", "cards", "categories", "reserves", "settings",
+      ];
+
+      const promises = subcollections.map((subcollection) => {
+        const path = `users/${uid}/${subcollection}`;
+        return deleteCollectionByPath(path);
+      });
+
+      await Promise.all(promises);
+      await userDocRef.delete();
+
+      const partnershipsQuery = db.collection("partnerships")
+        .where("members", "array-contains", uid);
+      const partnershipsSnapshot = await partnershipsQuery.get();
+
+      if (!partnershipsSnapshot.empty) {
+        const batch = db.batch();
+        partnershipsSnapshot.forEach((doc) => {
+          batch.delete(doc.ref);
+        });
+        await batch.commit();
+      }
+      logger.info(`Limpeza completa para o usuário ${uid} finalizada.`);
+      return null;
+    } catch (error) {
+      logger.error(`Erro ao excluir dados do usuário ${uid}:`, error);
+      return null;
+    }
   }
 );
 
-export const onUserDeleted = functions.auth.user().onDelete(async (user) => {
-  const uid = user.uid;
-  logger.info(`Iniciando a exclusão dos dados para o utilizador: ${uid}`);
+/**
+ * Função Chamável que verifica se um e-mail existe no Firebase Auth.
+ */
+export const checkIfEmailExists = onCall((request) => {
+  const email = request.data.email;
 
-  try {
-    const userDocRef = db.doc(`users/${uid}`);
-
-    const subcollections = [
-      "transactions",
-      "cards",
-      "categories",
-      "reserves",
-      "settings",
-    ];
-
-    const promises = subcollections.map((subcollection) => {
-      const path = `users/${uid}/${subcollection}`;
-      logger.info(`Agendando exclusão da subcoleção em: ${path}`);
-      return deleteCollectionByPath(path);
-    });
-
-    await Promise.all(promises);
-    logger.info(`Todas as subcoleções do utilizador ${uid} foram excluídas.`);
-
-    await userDocRef.delete();
-    logger.info(`Documento principal do utilizador ${uid} foi excluído.`);
-    
-    const partnershipsRef = db.collection("partnerships");
-    const partnershipsQuery = partnershipsRef.where("members", "array-contains", uid);
-    const partnershipsSnapshot = await partnershipsQuery.get();
-    
-    if (!partnershipsSnapshot.empty) {
-      const batch = db.batch();
-      partnershipsSnapshot.forEach(doc => {
-        logger.info(`Excluindo parceria ${doc.id}`);
-        batch.delete(doc.ref);
-      });
-      await batch.commit();
-      logger.info(`Parcerias do utilizador ${uid} foram excluídas.`);
-    }
-
-    logger.info(`Limpeza completa para o utilizador ${uid} finalizada com sucesso.`);
-    return null;
-
-  } catch (error) {
-    logger.error(`Erro ao excluir dados do utilizador ${uid}:`, error);
-    return null;
+  if (!email || typeof email !== "string") {
+    throw new HttpsError(
+      "invalid-argument",
+      "O e-mail é obrigatório.",
+    );
   }
+
+  return admin.auth().getUserByEmail(email)
+    .then(() => {
+      return {exists: true};
+    })
+    .catch((error) => {
+      if (error.code === "auth/user-not-found") {
+        return {exists: false};
+      }
+      throw new HttpsError(
+        "internal", "Ocorreu um erro ao verificar o e-mail.", error
+      );
+    });
 });
 
-
-async function deleteCollectionByPath(collectionPath: string, batchSize: number = 100) {
+/**
+ * Exclui todos os documentos de uma coleção em lotes.
+ * @param {string} collectionPath - O caminho da coleção a ser excluída.
+ * @param {number} batchSize
+ */
+async function deleteCollectionByPath(collectionPath: string, batchSize = 100) {
   const collectionRef = db.collection(collectionPath);
   const query = collectionRef.orderBy("__name__").limit(batchSize);
 
   let snapshot = await query.get();
   while (snapshot.size > 0) {
     const batch = db.batch();
-    snapshot.docs.forEach((doc) => {
+    snapshot.docs.forEach((doc: QueryDocumentSnapshot) => {
       batch.delete(doc.ref);
     });
     await batch.commit();
