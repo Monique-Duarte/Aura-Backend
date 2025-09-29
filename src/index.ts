@@ -1,163 +1,107 @@
-import {onSchedule} from "firebase-functions/v2/scheduler";
-import * as functions from "firebase-functions";
-import * as logger from "firebase-functions/logger";
+import { onSchedule } from "firebase-functions/v2/scheduler";
 import * as admin from "firebase-admin";
+import * as logger from "firebase-functions/logger";
 
-// Inicializa o app do Firebase Admin uma única vez
+// Inicializa o Firebase Admin SDK
 admin.initializeApp();
 const db = admin.firestore();
 
 /**
- * Cloud Function agendada (v2) para rodar todos os dias à 1 da manhã.
- * Ela cria transações recorrentes (rendas e despesas) para os usuários.
+ * Interface que representa a estrutura de uma transação (Renda ou Despesa)
+ * baseada no arquivo `types.ts` do seu projeto Aura.
  */
-export const createRecurringTransactions = onSchedule(
+interface Transaction {
+  // Campos obrigatórios em ambas as transações
+  description: string;
+  amount: number;
+  category: string;
+  isFixed: boolean;
+  date: admin.firestore.Timestamp;
+  dayOfMonth?: number;
+  creditCardId?: string;
+  paid?: boolean;
+  // Campos opcionais que podem existir
+}
+
+/**
+ * Esta função é executada todos os dias à 1h da manhã.
+ * Ela é projetada para funcionar com a estrutura do app Aura:
+ * users/{userId}/incomes/{incomeId} e users/{userId}/expenses/{expenseId}.
+ * Ela lê os campos `isFixed` e `dayOfMonth` para criar novos lançamentos.
+ */
+export const processRecurringTransactions = onSchedule(
   {
     schedule: "every day 01:00",
     timeZone: "America/Sao_Paulo",
   },
   async (event) => {
-    logger.info("Iniciando a criação de transações recorrentes...");
+    logger.info("Iniciando verificação de transações recorrentes para o app Aura.", { structuredData: true });
 
-    const today = new Date();
-    const currentDay = today.getDate();
-    const currentMonth = today.getMonth();
-    const currentYear = today.getFullYear();
+    const today = new Date().getDate();
 
+    // --- Processamento de Rendas Recorrentes ---
     try {
-      const usersSnapshot = await db.collection("users").get();
+      const recurringIncomes = await db
+        .collectionGroup("incomes")
+        .where("isFixed", "==", true)
+        .where("dayOfMonth", "==", today)
+        .get();
 
-      for (const userDoc of usersSnapshot.docs) {
-        const userId = userDoc.id;
-        logger.info(`Processando usuário: ${userId}`);
+      if (recurringIncomes.empty) {
+        logger.info("Nenhuma renda recorrente para processar hoje.");
+      } else {
+        const promises = recurringIncomes.docs.map(async (doc) => {
+          // Usamos "as Transaction" para o TypeScript entender a estrutura dos dados
+          const incomeData = doc.data() as Transaction;
+          const userId = doc.ref.parent.parent!.id;
 
-        const recurringTxQuery = db
-          .collection("users")
-          .doc(userId)
-          .collection("transactions")
-          .where("isRecurring", "==", true)
-          .where("recurringDay", "==", currentDay);
+          const newIncome = {
+            ...incomeData,
+            date: admin.firestore.Timestamp.now(),
+            isFixed: false,
+            originalFixedId: doc.id,
+          };
 
-        const recurringTxSnapshot = await recurringTxQuery.get();
-
-        if (recurringTxSnapshot.empty) {
-          logger.info(
-            `Nenhuma transação recorrente para o dia ${currentDay}.`
-          );
-          continue;
-        }
-
-        for (const recurringDoc of recurringTxSnapshot.docs) {
-          const recurringData = recurringDoc.data();
-          const description = recurringData.description || "Transação";
-
-          const startDate = new Date(currentYear, currentMonth, 1);
-          const endDate = new Date(currentYear, currentMonth + 1, 0);
-
-          const checkExistingQuery = db
-            .collection("users")
-            .doc(userId)
-            .collection("transactions")
-            .where("recurringSourceId", "==", recurringDoc.id)
-            .where("date", ">=", startDate)
-            .where("date", "<=", endDate);
-
-          const existingSnapshot = await checkExistingQuery.get();
-
-          if (existingSnapshot.empty) {
-            const newTransactionData: { [key: string]: any } = {
-              ...recurringData,
-              date: admin.firestore.Timestamp.fromDate(new Date()),
-              isRecurring: false,
-              recurringSourceId: recurringDoc.id,
-            };
-            delete newTransactionData.recurringDay;
-
-            await db
-              .collection("users")
-              .doc(userId)
-              .collection("transactions")
-              .add(newTransactionData);
-
-            logger.info(
-              `Transação "${description}" criada para o usuário ${userId}.`
-            );
-          } else {
-            logger.info(
-              `Transação "${description}" já existe para este mês.`
-            );
-          }
-        }
+          logger.info(`Lançando renda recorrente '${incomeData.description}' para o usuário ${userId}`);
+          return db.collection(`users/${userId}/incomes`).add(newIncome);
+        });
+        await Promise.all(promises);
+        logger.info(`${promises.length} rendas recorrentes processadas com sucesso.`);
       }
-      logger.info("Processo concluído com sucesso!");
     } catch (error) {
-      logger.error("Erro no processo de transações:", error);
+      logger.error("Erro ao processar rendas recorrentes:", error);
+    }
+
+    // --- Processamento de Despesas Recorrentes ---
+    try {
+      const recurringExpenses = await db
+        .collectionGroup("expenses")
+        .where("isFixed", "==", true)
+        .where("dayOfMonth", "==", today)
+        .get();
+
+      if (recurringExpenses.empty) {
+        logger.info("Nenhuma despesa recorrente para processar hoje.");
+      } else {
+        const promises = recurringExpenses.docs.map(async (doc) => {
+          const expenseData = doc.data() as Transaction;
+          const userId = doc.ref.parent.parent!.id;
+
+          const newExpense = {
+            ...expenseData,
+            date: admin.firestore.Timestamp.now(),
+            isFixed: false,
+            originalFixedId: doc.id,
+          };
+
+          logger.info(`Lançando despesa recorrente '${expenseData.description}' para o usuário ${userId}`);
+          return db.collection(`users/${userId}/expenses`).add(newExpense);
+        });
+        await Promise.all(promises);
+        logger.info(`${promises.length} despesas recorrentes processadas com sucesso.`);
+      }
+    } catch (error) {
+      logger.error("Erro ao processar despesas recorrentes:", error);
     }
   }
 );
-
-export const onUserDeleted = functions.auth.user().onDelete(async (user) => {
-  const uid = user.uid;
-  logger.info(`Iniciando a exclusão dos dados para o utilizador: ${uid}`);
-
-  try {
-    const userDocRef = db.doc(`users/${uid}`);
-
-    const subcollections = [
-      "transactions",
-      "cards",
-      "categories",
-      "reserves",
-      "settings",
-    ];
-
-    const promises = subcollections.map((subcollection) => {
-      const path = `users/${uid}/${subcollection}`;
-      logger.info(`Agendando exclusão da subcoleção em: ${path}`);
-      return deleteCollectionByPath(path);
-    });
-
-    await Promise.all(promises);
-    logger.info(`Todas as subcoleções do utilizador ${uid} foram excluídas.`);
-
-    await userDocRef.delete();
-    logger.info(`Documento principal do utilizador ${uid} foi excluído.`);
-    
-    const partnershipsRef = db.collection("partnerships");
-    const partnershipsQuery = partnershipsRef.where("members", "array-contains", uid);
-    const partnershipsSnapshot = await partnershipsQuery.get();
-    
-    if (!partnershipsSnapshot.empty) {
-      const batch = db.batch();
-      partnershipsSnapshot.forEach(doc => {
-        logger.info(`Excluindo parceria ${doc.id}`);
-        batch.delete(doc.ref);
-      });
-      await batch.commit();
-      logger.info(`Parcerias do utilizador ${uid} foram excluídas.`);
-    }
-
-    logger.info(`Limpeza completa para o utilizador ${uid} finalizada com sucesso.`);
-    return null;
-
-  } catch (error) {
-    logger.error(`Erro ao excluir dados do utilizador ${uid}:`, error);
-    return null;
-  }
-});
-
-
-async function deleteCollectionByPath(collectionPath: string, batchSize: number = 100) {
-  const collectionRef = db.collection(collectionPath);
-  const query = collectionRef.orderBy("__name__").limit(batchSize);
-
-  let snapshot = await query.get();
-  while (snapshot.size > 0) {
-    const batch = db.batch();
-    snapshot.docs.forEach((doc) => {
-      batch.delete(doc.ref);
-    });
-    await batch.commit();
-    snapshot = await query.get();
-  }
-}

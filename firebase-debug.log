@@ -1,0 +1,578 @@
+[debug] [2025-09-29T20:32:26.340Z] ----------------------------------------------------------------------
+[debug] [2025-09-29T20:32:26.343Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\moniq\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js deploy --only functions
+[debug] [2025-09-29T20:32:26.344Z] CLI Version:   14.17.0
+[debug] [2025-09-29T20:32:26.344Z] Platform:      win32
+[debug] [2025-09-29T20:32:26.344Z] Node Version:  v20.19.5
+[debug] [2025-09-29T20:32:26.344Z] Time:          Mon Sep 29 2025 17:32:26 GMT-0300 (Horário Padrão de Brasília)
+[debug] [2025-09-29T20:32:26.344Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2025-09-29T20:32:26.572Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-09-29T20:32:26.572Z] > authorizing via signed-in user (moniquead95@gmail.com)
+[debug] [2025-09-29T20:32:26.573Z] [iam] checking project aura-e6045 for permissions ["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","firebase.projects.get"]
+[debug] [2025-09-29T20:32:26.574Z] Checked if tokens are valid: true, expires at: 1759181436742
+[debug] [2025-09-29T20:32:26.574Z] Checked if tokens are valid: true, expires at: 1759181436742
+[debug] [2025-09-29T20:32:26.575Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/aura-e6045:testIamPermissions [none]
+[debug] [2025-09-29T20:32:26.575Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/aura-e6045:testIamPermissions x-goog-quota-user=projects/aura-e6045
+[debug] [2025-09-29T20:32:26.576Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/aura-e6045:testIamPermissions {"permissions":["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","firebase.projects.get"]}
+[debug] [2025-09-29T20:32:27.538Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/aura-e6045:testIamPermissions 200
+[debug] [2025-09-29T20:32:27.539Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/aura-e6045:testIamPermissions {"permissions":["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","firebase.projects.get"]}
+[debug] [2025-09-29T20:32:27.540Z] Checked if tokens are valid: true, expires at: 1759181436742
+[debug] [2025-09-29T20:32:27.540Z] Checked if tokens are valid: true, expires at: 1759181436742
+[debug] [2025-09-29T20:32:27.540Z] >>> [apiv2][query] POST https://iam.googleapis.com/v1/projects/aura-e6045/serviceAccounts/aura-e6045@appspot.gserviceaccount.com:testIamPermissions [none]
+[debug] [2025-09-29T20:32:27.541Z] >>> [apiv2][body] POST https://iam.googleapis.com/v1/projects/aura-e6045/serviceAccounts/aura-e6045@appspot.gserviceaccount.com:testIamPermissions {"permissions":["iam.serviceAccounts.actAs"]}
+[debug] [2025-09-29T20:32:28.436Z] <<< [apiv2][status] POST https://iam.googleapis.com/v1/projects/aura-e6045/serviceAccounts/aura-e6045@appspot.gserviceaccount.com:testIamPermissions 200
+[debug] [2025-09-29T20:32:28.436Z] <<< [apiv2][body] POST https://iam.googleapis.com/v1/projects/aura-e6045/serviceAccounts/aura-e6045@appspot.gserviceaccount.com:testIamPermissions {"permissions":["iam.serviceAccounts.actAs"]}
+[info] 
+[info] === Deploying to 'aura-e6045'...
+[info] 
+[info] i  deploying functions 
+[info] Running command: npm run build
+[info] +  functions: Finished running predeploy script. 
+[debug] [2025-09-29T20:32:35.533Z] Checked if tokens are valid: true, expires at: 1759181436742
+[debug] [2025-09-29T20:32:35.533Z] Checked if tokens are valid: true, expires at: 1759181436742
+[debug] [2025-09-29T20:32:35.533Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/aura-e6045/services/cloudresourcemanager.googleapis.com [none]
+[debug] [2025-09-29T20:32:35.533Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/aura-e6045/services/cloudresourcemanager.googleapis.com x-goog-quota-user=projects/aura-e6045
+[debug] [2025-09-29T20:32:36.650Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/aura-e6045/services/cloudresourcemanager.googleapis.com 200
+[debug] [2025-09-29T20:32:36.650Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/aura-e6045/services/cloudresourcemanager.googleapis.com [omitted]
+[debug] [2025-09-29T20:32:36.654Z] Checked if tokens are valid: true, expires at: 1759181436742
+[debug] [2025-09-29T20:32:36.654Z] Checked if tokens are valid: true, expires at: 1759181436742
+[debug] [2025-09-29T20:32:36.654Z] >>> [apiv2][query] GET https://cloudresourcemanager.googleapis.com/v1/projects/aura-e6045 [none]
+[debug] [2025-09-29T20:32:37.536Z] <<< [apiv2][status] GET https://cloudresourcemanager.googleapis.com/v1/projects/aura-e6045 200
+[debug] [2025-09-29T20:32:37.536Z] <<< [apiv2][body] GET https://cloudresourcemanager.googleapis.com/v1/projects/aura-e6045 {"projectNumber":"733656810098","projectId":"aura-e6045","lifecycleState":"ACTIVE","name":"Aura","labels":{"firebase":"enabled","firebase-core":"disabled"},"createTime":"2025-07-21T16:49:02.468354Z"}
+[info] i  functions: preparing codebase default for deployment 
+[info] i  functions: ensuring required API cloudfunctions.googleapis.com is enabled... 
+[debug] [2025-09-29T20:32:37.551Z] Checked if tokens are valid: true, expires at: 1759181436742
+[debug] [2025-09-29T20:32:37.551Z] Checked if tokens are valid: true, expires at: 1759181436742
+[debug] [2025-09-29T20:32:37.552Z] Checked if tokens are valid: true, expires at: 1759181436742
+[debug] [2025-09-29T20:32:37.552Z] Checked if tokens are valid: true, expires at: 1759181436742
+[info] i  functions: ensuring required API cloudbuild.googleapis.com is enabled... 
+[debug] [2025-09-29T20:32:37.554Z] Checked if tokens are valid: true, expires at: 1759181436742
+[debug] [2025-09-29T20:32:37.554Z] Checked if tokens are valid: true, expires at: 1759181436742
+[info] i  artifactregistry: ensuring required API artifactregistry.googleapis.com is enabled... 
+[debug] [2025-09-29T20:32:37.556Z] Checked if tokens are valid: true, expires at: 1759181436742
+[debug] [2025-09-29T20:32:37.556Z] Checked if tokens are valid: true, expires at: 1759181436742
+[debug] [2025-09-29T20:32:37.557Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/aura-e6045/services/cloudfunctions.googleapis.com [none]
+[debug] [2025-09-29T20:32:37.557Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/aura-e6045/services/cloudfunctions.googleapis.com x-goog-quota-user=projects/aura-e6045
+[debug] [2025-09-29T20:32:37.559Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/aura-e6045/services/runtimeconfig.googleapis.com [none]
+[debug] [2025-09-29T20:32:37.559Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/aura-e6045/services/runtimeconfig.googleapis.com x-goog-quota-user=projects/aura-e6045
+[debug] [2025-09-29T20:32:37.564Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/aura-e6045/services/cloudbuild.googleapis.com [none]
+[debug] [2025-09-29T20:32:37.565Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/aura-e6045/services/cloudbuild.googleapis.com x-goog-quota-user=projects/aura-e6045
+[debug] [2025-09-29T20:32:37.569Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/aura-e6045/services/artifactregistry.googleapis.com [none]
+[debug] [2025-09-29T20:32:37.569Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/aura-e6045/services/artifactregistry.googleapis.com x-goog-quota-user=projects/aura-e6045
+[debug] [2025-09-29T20:32:37.961Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/aura-e6045/services/cloudfunctions.googleapis.com 200
+[debug] [2025-09-29T20:32:37.961Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/aura-e6045/services/cloudfunctions.googleapis.com [omitted]
+[info] +  functions: required API cloudfunctions.googleapis.com is enabled 
+[debug] [2025-09-29T20:32:38.621Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/aura-e6045/services/runtimeconfig.googleapis.com 200
+[debug] [2025-09-29T20:32:38.621Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/aura-e6045/services/runtimeconfig.googleapis.com [omitted]
+[debug] [2025-09-29T20:32:38.632Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/aura-e6045/services/cloudbuild.googleapis.com 200
+[debug] [2025-09-29T20:32:38.632Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/aura-e6045/services/cloudbuild.googleapis.com [omitted]
+[info] +  functions: required API cloudbuild.googleapis.com is enabled 
+[debug] [2025-09-29T20:32:38.645Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/aura-e6045/services/artifactregistry.googleapis.com 200
+[debug] [2025-09-29T20:32:38.645Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/aura-e6045/services/artifactregistry.googleapis.com [omitted]
+[info] +  artifactregistry: required API artifactregistry.googleapis.com is enabled 
+[debug] [2025-09-29T20:32:38.649Z] Checked if tokens are valid: true, expires at: 1759181436742
+[debug] [2025-09-29T20:32:38.649Z] Checked if tokens are valid: true, expires at: 1759181436742
+[debug] [2025-09-29T20:32:38.650Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/aura-e6045/adminSdkConfig [none]
+[debug] [2025-09-29T20:32:39.103Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/aura-e6045/adminSdkConfig 200
+[debug] [2025-09-29T20:32:39.104Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/aura-e6045/adminSdkConfig {"projectId":"aura-e6045","storageBucket":"aura-e6045.firebasestorage.app"}
+[debug] [2025-09-29T20:32:39.106Z] Checked if tokens are valid: true, expires at: 1759181436742
+[debug] [2025-09-29T20:32:39.106Z] Checked if tokens are valid: true, expires at: 1759181436742
+[debug] [2025-09-29T20:32:39.106Z] >>> [apiv2][query] GET https://runtimeconfig.googleapis.com/v1beta1/projects/aura-e6045/configs [none]
+[debug] [2025-09-29T20:32:40.460Z] <<< [apiv2][status] GET https://runtimeconfig.googleapis.com/v1beta1/projects/aura-e6045/configs 200
+[debug] [2025-09-29T20:32:40.460Z] <<< [apiv2][body] GET https://runtimeconfig.googleapis.com/v1beta1/projects/aura-e6045/configs {}
+[debug] [2025-09-29T20:32:40.465Z] Validating nodejs source
+[debug] [2025-09-29T20:32:41.869Z] > [functions] package.json contents: {
+  "name": "functions",
+  "scripts": {
+    "lint": "eslint --ext .js,.ts .",
+    "build": "tsc",
+    "build:watch": "tsc --watch",
+    "serve": "npm run build && firebase emulators:start --only functions",
+    "shell": "npm run build && firebase functions:shell",
+    "start": "npm run shell",
+    "deploy": "firebase deploy --only functions",
+    "logs": "firebase functions:log"
+  },
+  "engines": {
+    "node": "22"
+  },
+  "main": "lib/index.js",
+  "dependencies": {
+    "firebase-admin": "^13.4.0",
+    "firebase-functions": "^6.4.0"
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^5.12.0",
+    "@typescript-eslint/parser": "^5.12.0",
+    "eslint": "^8.9.0",
+    "eslint-config-google": "^0.14.0",
+    "eslint-plugin-import": "^2.25.4",
+    "firebase-functions-test": "^3.1.0",
+    "typescript": "^5.7.3"
+  },
+  "private": true
+}
+[debug] [2025-09-29T20:32:41.869Z] Building nodejs source
+[info] i  functions: Loading and analyzing source code for codebase default to determine what to deploy 
+[debug] [2025-09-29T20:32:41.871Z] Could not find functions.yaml. Must use http discovery
+[debug] [2025-09-29T20:32:41.880Z] Found firebase-functions binary at 'C:\Users\moniq\Documents\Aura-Backend\Aura-Backend\node_modules\.bin\firebase-functions'
+[info] Serving at port 8008
+
+[debug] [2025-09-29T20:32:42.596Z] Got response from /__/functions.yaml {"endpoints":{"processRecurringTransactions":{"availableMemoryMb":null,"timeoutSeconds":null,"minInstances":null,"maxInstances":null,"ingressSettings":null,"concurrency":null,"serviceAccountEmail":null,"vpc":null,"platform":"gcfv2","labels":{},"scheduleTrigger":{"schedule":"every day 01:00","retryConfig":{},"timeZone":"America/Sao_Paulo"},"entryPoint":"processRecurringTransactions"}},"specVersion":"v1alpha1","requiredAPIs":[{"api":"cloudscheduler.googleapis.com","reason":"Needed for scheduled functions."}],"extensions":{}}
+[info] i  extensions: ensuring required API firebaseextensions.googleapis.com is enabled... 
+[debug] [2025-09-29T20:32:46.649Z] Checked if tokens are valid: true, expires at: 1759181436742
+[debug] [2025-09-29T20:32:46.649Z] Checked if tokens are valid: true, expires at: 1759181436742
+[debug] [2025-09-29T20:32:46.649Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/aura-e6045/services/firebaseextensions.googleapis.com [none]
+[debug] [2025-09-29T20:32:46.649Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/aura-e6045/services/firebaseextensions.googleapis.com x-goog-quota-user=projects/aura-e6045
+[debug] [2025-09-29T20:32:47.689Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/aura-e6045/services/firebaseextensions.googleapis.com 200
+[debug] [2025-09-29T20:32:47.689Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/aura-e6045/services/firebaseextensions.googleapis.com [omitted]
+[info] +  extensions: required API firebaseextensions.googleapis.com is enabled 
+[debug] [2025-09-29T20:32:47.693Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-09-29T20:32:47.693Z] > authorizing via signed-in user (moniquead95@gmail.com)
+[debug] [2025-09-29T20:32:47.693Z] [iam] checking project aura-e6045 for permissions ["firebase.projects.get","firebaseextensions.instances.list"]
+[debug] [2025-09-29T20:32:47.693Z] Checked if tokens are valid: true, expires at: 1759181436742
+[debug] [2025-09-29T20:32:47.694Z] Checked if tokens are valid: true, expires at: 1759181436742
+[debug] [2025-09-29T20:32:47.694Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/aura-e6045:testIamPermissions [none]
+[debug] [2025-09-29T20:32:47.694Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/aura-e6045:testIamPermissions x-goog-quota-user=projects/aura-e6045
+[debug] [2025-09-29T20:32:47.694Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/aura-e6045:testIamPermissions {"permissions":["firebase.projects.get","firebaseextensions.instances.list"]}
+[debug] [2025-09-29T20:32:48.560Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/aura-e6045:testIamPermissions 200
+[debug] [2025-09-29T20:32:48.561Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/aura-e6045:testIamPermissions {"permissions":["firebase.projects.get","firebaseextensions.instances.list"]}
+[debug] [2025-09-29T20:32:48.561Z] Checked if tokens are valid: true, expires at: 1759181436742
+[debug] [2025-09-29T20:32:48.561Z] Checked if tokens are valid: true, expires at: 1759181436742
+[debug] [2025-09-29T20:32:48.562Z] >>> [apiv2][query] GET https://firebaseextensions.googleapis.com/v1beta/projects/aura-e6045/instances pageSize=100&pageToken=
+[debug] [2025-09-29T20:32:49.841Z] <<< [apiv2][status] GET https://firebaseextensions.googleapis.com/v1beta/projects/aura-e6045/instances 200
+[debug] [2025-09-29T20:32:49.841Z] <<< [apiv2][body] GET https://firebaseextensions.googleapis.com/v1beta/projects/aura-e6045/instances {}
+[info] i  functions: preparing . directory for uploading... 
+[info] i  functions: packaged C:\Users\moniq\Documents\Aura-Backend\Aura-Backend (95.12 KB) for uploading 
+[debug] [2025-09-29T20:32:49.922Z] Checked if tokens are valid: true, expires at: 1759181436742
+[debug] [2025-09-29T20:32:49.922Z] Checked if tokens are valid: true, expires at: 1759181436742
+[debug] [2025-09-29T20:32:49.922Z] >>> [apiv2][query] GET https://cloudfunctions.googleapis.com/v1/projects/aura-e6045/locations/-/functions [none]
+[debug] [2025-09-29T20:32:50.746Z] <<< [apiv2][status] GET https://cloudfunctions.googleapis.com/v1/projects/aura-e6045/locations/-/functions 200
+[debug] [2025-09-29T20:32:50.747Z] <<< [apiv2][body] GET https://cloudfunctions.googleapis.com/v1/projects/aura-e6045/locations/-/functions {}
+[debug] [2025-09-29T20:32:50.749Z] Checked if tokens are valid: true, expires at: 1759181436742
+[debug] [2025-09-29T20:32:50.749Z] Checked if tokens are valid: true, expires at: 1759181436742
+[debug] [2025-09-29T20:32:50.750Z] >>> [apiv2][query] GET https://cloudfunctions.googleapis.com/v2/projects/aura-e6045/locations/-/functions filter=environment%3D%22GEN_2%22
+[debug] [2025-09-29T20:32:51.947Z] <<< [apiv2][status] GET https://cloudfunctions.googleapis.com/v2/projects/aura-e6045/locations/-/functions 200
+[debug] [2025-09-29T20:32:51.948Z] <<< [apiv2][body] GET https://cloudfunctions.googleapis.com/v2/projects/aura-e6045/locations/-/functions {"functions":[{"name":"projects/aura-e6045/locations/us-central1/functions/createRecurringTransactions","buildConfig":{"build":"projects/733656810098/locations/us-central1/builds/b33592a4-39a5-4a88-8078-1bb78b77a956","runtime":"nodejs22","entryPoint":"createRecurringTransactions","source":{"storageSource":{"bucket":"gcf-v2-sources-733656810098-us-central1","object":"createRecurringTransactions/function-source.zip","generation":"1754330924108576"}},"environmentVariables":{"GOOGLE_NODE_RUN_SCRIPTS":""},"dockerRepository":"projects/aura-e6045/locations/us-central1/repositories/gcf-artifacts","sourceProvenance":{"resolvedStorageSource":{"bucket":"gcf-v2-sources-733656810098-us-central1","object":"createRecurringTransactions/function-source.zip","generation":"1754330924108576"}},"dockerRegistry":"ARTIFACT_REGISTRY","serviceAccount":"projects/aura-e6045/serviceAccounts/733656810098-compute@developer.gserviceaccount.com","automaticUpdatePolicy":{}},"serviceConfig":{"service":"projects/aura-e6045/locations/us-central1/services/createrecurringtransactions","timeoutSeconds":60,"environmentVariables":{"FIREBASE_CONFIG":"{\"projectId\":\"aura-e6045\",\"storageBucket\":\"aura-e6045.firebasestorage.app\"}","GCLOUD_PROJECT":"aura-e6045","EVENTARC_CLOUD_EVENT_SOURCE":"projects/aura-e6045/locations/us-central1/services/createRecurringTransactions","FUNCTION_TARGET":"createRecurringTransactions","LOG_EXECUTION_ID":"true"},"maxInstanceCount":20,"ingressSettings":"ALLOW_ALL","uri":"https://createrecurringtransactions-eh3gqgnlua-uc.a.run.app","serviceAccountEmail":"733656810098-compute@developer.gserviceaccount.com","availableMemory":"256Mi","allTrafficOnLatestRevision":true,"revision":"createrecurringtransactions-00003-rej","maxInstanceRequestConcurrency":80,"availableCpu":"1"},"state":"ACTIVE","updateTime":"2025-08-22T14:25:46.716563469Z","labels":{"firebase-functions-hash":"7640ef97e508957050b8b284e2e7b296d9ca0128","deployment-tool":"cli-firebase","deployment-scheduled":"true"},"environment":"GEN_2","url":"https://us-central1-aura-e6045.cloudfunctions.net/createRecurringTransactions","createTime":"2025-07-22T17:24:35.498504979Z","satisfiesPzi":true}]}
+[info] i  functions: ensuring required API cloudscheduler.googleapis.com is enabled... 
+[debug] [2025-09-29T20:32:51.958Z] Checked if tokens are valid: true, expires at: 1759181436742
+[debug] [2025-09-29T20:32:51.958Z] Checked if tokens are valid: true, expires at: 1759181436742
+[debug] [2025-09-29T20:32:51.958Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/733656810098/services/cloudscheduler.googleapis.com [none]
+[debug] [2025-09-29T20:32:51.958Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/733656810098/services/cloudscheduler.googleapis.com x-goog-quota-user=projects/733656810098
+[debug] [2025-09-29T20:32:52.897Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/733656810098/services/cloudscheduler.googleapis.com 200
+[debug] [2025-09-29T20:32:52.898Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/733656810098/services/cloudscheduler.googleapis.com [omitted]
+[info] +  functions: required API cloudscheduler.googleapis.com is enabled 
+[info] i  functions: ensuring required API run.googleapis.com is enabled... 
+[debug] [2025-09-29T20:32:52.908Z] Checked if tokens are valid: true, expires at: 1759181436742
+[debug] [2025-09-29T20:32:52.909Z] Checked if tokens are valid: true, expires at: 1759181436742
+[info] i  functions: ensuring required API eventarc.googleapis.com is enabled... 
+[debug] [2025-09-29T20:32:52.910Z] Checked if tokens are valid: true, expires at: 1759181436742
+[debug] [2025-09-29T20:32:52.910Z] Checked if tokens are valid: true, expires at: 1759181436742
+[info] i  functions: ensuring required API pubsub.googleapis.com is enabled... 
+[debug] [2025-09-29T20:32:52.911Z] Checked if tokens are valid: true, expires at: 1759181436742
+[debug] [2025-09-29T20:32:52.912Z] Checked if tokens are valid: true, expires at: 1759181436742
+[info] i  functions: ensuring required API storage.googleapis.com is enabled... 
+[debug] [2025-09-29T20:32:52.913Z] Checked if tokens are valid: true, expires at: 1759181436742
+[debug] [2025-09-29T20:32:52.913Z] Checked if tokens are valid: true, expires at: 1759181436742
+[debug] [2025-09-29T20:32:52.913Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/733656810098/services/run.googleapis.com [none]
+[debug] [2025-09-29T20:32:52.913Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/733656810098/services/run.googleapis.com x-goog-quota-user=projects/733656810098
+[debug] [2025-09-29T20:32:52.914Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/733656810098/services/eventarc.googleapis.com [none]
+[debug] [2025-09-29T20:32:52.914Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/733656810098/services/eventarc.googleapis.com x-goog-quota-user=projects/733656810098
+[debug] [2025-09-29T20:32:52.920Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/733656810098/services/pubsub.googleapis.com [none]
+[debug] [2025-09-29T20:32:52.920Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/733656810098/services/pubsub.googleapis.com x-goog-quota-user=projects/733656810098
+[debug] [2025-09-29T20:32:52.923Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/733656810098/services/storage.googleapis.com [none]
+[debug] [2025-09-29T20:32:52.924Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/733656810098/services/storage.googleapis.com x-goog-quota-user=projects/733656810098
+[debug] [2025-09-29T20:32:53.310Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/733656810098/services/run.googleapis.com 200
+[debug] [2025-09-29T20:32:53.311Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/733656810098/services/run.googleapis.com [omitted]
+[info] +  functions: required API run.googleapis.com is enabled 
+[debug] [2025-09-29T20:32:53.955Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/733656810098/services/eventarc.googleapis.com 200
+[debug] [2025-09-29T20:32:53.955Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/733656810098/services/eventarc.googleapis.com [omitted]
+[info] +  functions: required API eventarc.googleapis.com is enabled 
+[debug] [2025-09-29T20:32:53.966Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/733656810098/services/pubsub.googleapis.com 200
+[debug] [2025-09-29T20:32:53.966Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/733656810098/services/pubsub.googleapis.com [omitted]
+[info] +  functions: required API pubsub.googleapis.com is enabled 
+[debug] [2025-09-29T20:32:53.977Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/733656810098/services/storage.googleapis.com 200
+[debug] [2025-09-29T20:32:53.977Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/733656810098/services/storage.googleapis.com [omitted]
+[info] +  functions: required API storage.googleapis.com is enabled 
+[info] i  functions: generating the service identity for pubsub.googleapis.com... 
+[debug] [2025-09-29T20:32:53.983Z] Checked if tokens are valid: true, expires at: 1759181436742
+[debug] [2025-09-29T20:32:53.983Z] Checked if tokens are valid: true, expires at: 1759181436742
+[info] i  functions: generating the service identity for eventarc.googleapis.com... 
+[debug] [2025-09-29T20:32:53.983Z] Checked if tokens are valid: true, expires at: 1759181436742
+[debug] [2025-09-29T20:32:53.984Z] Checked if tokens are valid: true, expires at: 1759181436742
+[debug] [2025-09-29T20:32:53.984Z] >>> [apiv2][query] POST https://serviceusage.googleapis.com/v1beta1/projects/733656810098/services/pubsub.googleapis.com:generateServiceIdentity [none]
+[debug] [2025-09-29T20:32:53.984Z] >>> [apiv2][(partial)header] POST https://serviceusage.googleapis.com/v1beta1/projects/733656810098/services/pubsub.googleapis.com:generateServiceIdentity x-goog-quota-user=projects/733656810098
+[debug] [2025-09-29T20:32:53.984Z] >>> [apiv2][body] POST https://serviceusage.googleapis.com/v1beta1/projects/733656810098/services/pubsub.googleapis.com:generateServiceIdentity {}
+[debug] [2025-09-29T20:32:53.985Z] >>> [apiv2][query] POST https://serviceusage.googleapis.com/v1beta1/projects/733656810098/services/eventarc.googleapis.com:generateServiceIdentity [none]
+[debug] [2025-09-29T20:32:53.985Z] >>> [apiv2][(partial)header] POST https://serviceusage.googleapis.com/v1beta1/projects/733656810098/services/eventarc.googleapis.com:generateServiceIdentity x-goog-quota-user=projects/733656810098
+[debug] [2025-09-29T20:32:53.985Z] >>> [apiv2][body] POST https://serviceusage.googleapis.com/v1beta1/projects/733656810098/services/eventarc.googleapis.com:generateServiceIdentity {}
+[debug] [2025-09-29T20:32:54.981Z] <<< [apiv2][status] POST https://serviceusage.googleapis.com/v1beta1/projects/733656810098/services/eventarc.googleapis.com:generateServiceIdentity 200
+[debug] [2025-09-29T20:32:54.981Z] <<< [apiv2][body] POST https://serviceusage.googleapis.com/v1beta1/projects/733656810098/services/eventarc.googleapis.com:generateServiceIdentity {"name":"operations/finished.DONE_OPERATION","done":true,"response":{"@type":"type.googleapis.com/google.api.serviceusage.v1beta1.ServiceIdentity","email":"service-733656810098@gcp-sa-eventarc.iam.gserviceaccount.com","uniqueId":"108377150894414574679"}}
+[debug] [2025-09-29T20:32:54.992Z] <<< [apiv2][status] POST https://serviceusage.googleapis.com/v1beta1/projects/733656810098/services/pubsub.googleapis.com:generateServiceIdentity 200
+[debug] [2025-09-29T20:32:54.993Z] <<< [apiv2][body] POST https://serviceusage.googleapis.com/v1beta1/projects/733656810098/services/pubsub.googleapis.com:generateServiceIdentity {"name":"operations/finished.DONE_OPERATION","done":true,"response":{"@type":"type.googleapis.com/google.api.serviceusage.v1beta1.ServiceIdentity","email":"service-733656810098@gcp-sa-pubsub.iam.gserviceaccount.com","uniqueId":"111599651625558352061"}}
+[debug] [2025-09-29T20:32:54.999Z] Checked if tokens are valid: true, expires at: 1759181436742
+[debug] [2025-09-29T20:32:54.999Z] Checked if tokens are valid: true, expires at: 1759181436742
+[debug] [2025-09-29T20:32:55.000Z] >>> [apiv2][query] GET https://cloudresourcemanager.googleapis.com/v1/projects/aura-e6045 [none]
+[debug] [2025-09-29T20:32:55.890Z] <<< [apiv2][status] GET https://cloudresourcemanager.googleapis.com/v1/projects/aura-e6045 200
+[debug] [2025-09-29T20:32:55.891Z] <<< [apiv2][body] GET https://cloudresourcemanager.googleapis.com/v1/projects/aura-e6045 {"projectNumber":"733656810098","projectId":"aura-e6045","lifecycleState":"ACTIVE","name":"Aura","labels":{"firebase":"enabled","firebase-core":"disabled"},"createTime":"2025-07-21T16:49:02.468354Z"}
+[debug] [2025-09-29T20:32:55.892Z] Checked if tokens are valid: true, expires at: 1759181436742
+[debug] [2025-09-29T20:32:55.893Z] Checked if tokens are valid: true, expires at: 1759181436742
+[debug] [2025-09-29T20:32:55.893Z] >>> [apiv2][query] GET https://compute.googleapis.com/compute/v1/projects/733656810098 [none]
+[debug] [2025-09-29T20:32:56.243Z] <<< [apiv2][status] GET https://compute.googleapis.com/compute/v1/projects/733656810098 403
+[debug] [2025-09-29T20:32:56.244Z] <<< [apiv2][body] GET https://compute.googleapis.com/compute/v1/projects/733656810098 {"error":{"code":403,"message":"Compute Engine API has not been used in project 733656810098 before or it is disabled. Enable it by visiting https://console.developers.google.com/apis/api/compute.googleapis.com/overview?project=733656810098 then retry. If you enabled this API recently, wait a few minutes for the action to propagate to our systems and retry.","errors":[{"message":"Compute Engine API has not been used in project 733656810098 before or it is disabled. Enable it by visiting https://console.developers.google.com/apis/api/compute.googleapis.com/overview?project=733656810098 then retry. If you enabled this API recently, wait a few minutes for the action to propagate to our systems and retry.","domain":"usageLimits","reason":"accessNotConfigured","extendedHelp":"https://console.developers.google.com"}],"status":"PERMISSION_DENIED","details":[{"@type":"type.googleapis.com/google.rpc.ErrorInfo","reason":"SERVICE_DISABLED","domain":"googleapis.com","metadata":{"service":"compute.googleapis.com","serviceTitle":"Compute Engine API","activationUrl":"https://console.developers.google.com/apis/api/compute.googleapis.com/overview?project=733656810098","consumer":"projects/733656810098","containerInfo":"733656810098"}},{"@type":"type.googleapis.com/google.rpc.LocalizedMessage","locale":"en-US","message":"Compute Engine API has not been used in project 733656810098 before or it is disabled. Enable it by visiting https://console.developers.google.com/apis/api/compute.googleapis.com/overview?project=733656810098 then retry. If you enabled this API recently, wait a few minutes for the action to propagate to our systems and retry."},{"@type":"type.googleapis.com/google.rpc.Help","links":[{"description":"Google developers console API activation","url":"https://console.developers.google.com/apis/api/compute.googleapis.com/overview?project=733656810098"}]}]}}
+[debug] [2025-09-29T20:32:56.245Z] unable to look up default compute service account. Falling back to 733656810098-compute@developer.gserviceaccount.com. Error: {"name":"FirebaseError","children":[],"context":{"body":{"error":{"code":403,"message":"Compute Engine API has not been used in project 733656810098 before or it is disabled. Enable it by visiting https://console.developers.google.com/apis/api/compute.googleapis.com/overview?project=733656810098 then retry. If you enabled this API recently, wait a few minutes for the action to propagate to our systems and retry.","errors":[{"message":"Compute Engine API has not been used in project 733656810098 before or it is disabled. Enable it by visiting https://console.developers.google.com/apis/api/compute.googleapis.com/overview?project=733656810098 then retry. If you enabled this API recently, wait a few minutes for the action to propagate to our systems and retry.","domain":"usageLimits","reason":"accessNotConfigured","extendedHelp":"https://console.developers.google.com"}],"status":"PERMISSION_DENIED","details":[{"@type":"type.googleapis.com/google.rpc.ErrorInfo","reason":"SERVICE_DISABLED","domain":"googleapis.com","metadata":{"service":"compute.googleapis.com","serviceTitle":"Compute Engine API","activationUrl":"https://console.developers.google.com/apis/api/compute.googleapis.com/overview?project=733656810098","consumer":"projects/733656810098","containerInfo":"733656810098"}},{"@type":"type.googleapis.com/google.rpc.LocalizedMessage","locale":"en-US","message":"Compute Engine API has not been used in project 733656810098 before or it is disabled. Enable it by visiting https://console.developers.google.com/apis/api/compute.googleapis.com/overview?project=733656810098 then retry. If you enabled this API recently, wait a few minutes for the action to propagate to our systems and retry."},{"@type":"type.googleapis.com/google.rpc.Help","links":[{"description":"Google developers console API activation","url":"https://console.developers.google.com/apis/api/compute.googleapis.com/overview?project=733656810098"}]}]}},"response":{"statusCode":403}},"exit":1,"message":"Request to https://compute.googleapis.com/compute/v1/projects/733656810098 had HTTP Error: 403, Compute Engine API has not been used in project 733656810098 before or it is disabled. Enable it by visiting https://console.developers.google.com/apis/api/compute.googleapis.com/overview?project=733656810098 then retry. If you enabled this API recently, wait a few minutes for the action to propagate to our systems and retry.","status":403}
+[debug] [2025-09-29T20:32:56.246Z] Checked if tokens are valid: true, expires at: 1759181436742
+[debug] [2025-09-29T20:32:56.246Z] Checked if tokens are valid: true, expires at: 1759181436742
+[debug] [2025-09-29T20:32:56.247Z] >>> [apiv2][query] GET https://cloudbilling.googleapis.com/v1/projects/aura-e6045/billingInfo [none]
+[debug] [2025-09-29T20:32:57.405Z] <<< [apiv2][status] GET https://cloudbilling.googleapis.com/v1/projects/aura-e6045/billingInfo 200
+[debug] [2025-09-29T20:32:57.406Z] <<< [apiv2][body] GET https://cloudbilling.googleapis.com/v1/projects/aura-e6045/billingInfo {"name":"projects/aura-e6045/billingInfo","projectId":"aura-e6045","billingAccountName":"billingAccounts/014DFB-EE4700-4E6436","billingEnabled":true}
+[debug] [2025-09-29T20:32:57.414Z] Checked if tokens are valid: true, expires at: 1759181436742
+[debug] [2025-09-29T20:32:57.414Z] Checked if tokens are valid: true, expires at: 1759181436742
+[debug] [2025-09-29T20:32:57.415Z] >>> [apiv2][query] POST https://cloudfunctions.googleapis.com/v2/projects/aura-e6045/locations/us-central1/functions:generateUploadUrl [none]
+[debug] [2025-09-29T20:32:58.532Z] <<< [apiv2][status] POST https://cloudfunctions.googleapis.com/v2/projects/aura-e6045/locations/us-central1/functions:generateUploadUrl 200
+[debug] [2025-09-29T20:32:58.533Z] <<< [apiv2][body] POST https://cloudfunctions.googleapis.com/v2/projects/aura-e6045/locations/us-central1/functions:generateUploadUrl {"uploadUrl":"https://storage.googleapis.com/gcf-v2-uploads-733656810098.us-central1.cloudfunctions.appspot.com/fc42b04d-5fe0-4fad-830b-db966a13e32a.zip?GoogleAccessId=service-733656810098@gcf-admin-robot.iam.gserviceaccount.com&Expires=1759179778&Signature=Pd4PaZERol8A0nBSz58ss08nBWmicRYRTEpoH%2F5%2FNSkTbafgciNlhDBFM7%2BD7unGZ21fIhTWVMqHT10MjTACki1QmVimWt%2BtzNJkhQ1Dn4xqq%2BABdbxV629%2B288PUYTBj7hxnVHxoj7uWl2gbgBTtaYBVrdHFKqxa8%2BRYXX%2FMqOtTq9z0iy8qY4%2BSv7Ra%2F1CsMhlTMZkKzfzCNT45eBi9QfFvB9J8jvFpvlXuYMTRca9O3ACW2dYhmm5CP006L3yZm5ZOXZz1a63VJZqGxvcDa7HAl7PFWAGEv5tBhwSKWl4NvZRlXqfzC0VZBB9zIPXiK58mSc%2FaxMRy2xfsPKIWw%3D%3D","storageSource":{"bucket":"gcf-v2-uploads-733656810098.us-central1.cloudfunctions.appspot.com","object":"fc42b04d-5fe0-4fad-830b-db966a13e32a.zip"}}
+[debug] [2025-09-29T20:32:58.538Z] >>> [apiv2][query] PUT https://storage.googleapis.com/gcf-v2-uploads-733656810098.us-central1.cloudfunctions.appspot.com/fc42b04d-5fe0-4fad-830b-db966a13e32a.zip GoogleAccessId=service-733656810098%40gcf-admin-robot.iam.gserviceaccount.com&Expires=1759179778&Signature=Pd4PaZERol8A0nBSz58ss08nBWmicRYRTEpoH%2F5%2FNSkTbafgciNlhDBFM7%2BD7unGZ21fIhTWVMqHT10MjTACki1QmVimWt%2BtzNJkhQ1Dn4xqq%2BABdbxV629%2B288PUYTBj7hxnVHxoj7uWl2gbgBTtaYBVrdHFKqxa8%2BRYXX%2FMqOtTq9z0iy8qY4%2BSv7Ra%2F1CsMhlTMZkKzfzCNT45eBi9QfFvB9J8jvFpvlXuYMTRca9O3ACW2dYhmm5CP006L3yZm5ZOXZz1a63VJZqGxvcDa7HAl7PFWAGEv5tBhwSKWl4NvZRlXqfzC0VZBB9zIPXiK58mSc%2FaxMRy2xfsPKIWw%3D%3D
+[debug] [2025-09-29T20:32:58.538Z] >>> [apiv2][body] PUT https://storage.googleapis.com/gcf-v2-uploads-733656810098.us-central1.cloudfunctions.appspot.com/fc42b04d-5fe0-4fad-830b-db966a13e32a.zip [stream]
+[debug] [2025-09-29T20:33:00.024Z] <<< [apiv2][status] PUT https://storage.googleapis.com/gcf-v2-uploads-733656810098.us-central1.cloudfunctions.appspot.com/fc42b04d-5fe0-4fad-830b-db966a13e32a.zip 200
+[debug] [2025-09-29T20:33:00.024Z] <<< [apiv2][body] PUT https://storage.googleapis.com/gcf-v2-uploads-733656810098.us-central1.cloudfunctions.appspot.com/fc42b04d-5fe0-4fad-830b-db966a13e32a.zip [omitted]
+[info] +  functions: . source uploaded successfully 
+[info] 
+The following functions are found in your project but do not exist in your local source code:
+	createRecurringTransactions(us-central1)
+
+If you are renaming a function or changing its region, it is recommended that you create the new function first before deleting the old one to prevent event loss. For more info, visit https://firebase.google.com/docs/functions/manage-functions#modify
+
+[info] i  functions: creating Node.js 22 (2nd Gen) function processRecurringTransactions(us-central1)... 
+[debug] [2025-09-29T20:33:41.011Z] Checked if tokens are valid: true, expires at: 1759181436742
+[debug] [2025-09-29T20:33:41.011Z] Checked if tokens are valid: true, expires at: 1759181436742
+[info] i  functions: deleting Node.js 22 (2nd Gen) function createRecurringTransactions(us-central1)... 
+[debug] [2025-09-29T20:33:41.013Z] Checked if tokens are valid: true, expires at: 1759181436742
+[debug] [2025-09-29T20:33:41.013Z] Checked if tokens are valid: true, expires at: 1759181436742
+[debug] [2025-09-29T20:33:41.014Z] >>> [apiv2][query] POST https://cloudfunctions.googleapis.com/v2/projects/aura-e6045/locations/us-central1/functions functionId=processRecurringTransactions
+[debug] [2025-09-29T20:33:41.014Z] >>> [apiv2][body] POST https://cloudfunctions.googleapis.com/v2/projects/aura-e6045/locations/us-central1/functions {"name":"projects/aura-e6045/locations/us-central1/functions/processRecurringTransactions","buildConfig":{"runtime":"nodejs22","entryPoint":"processRecurringTransactions","source":{"storageSource":{"bucket":"gcf-v2-uploads-733656810098.us-central1.cloudfunctions.appspot.com","object":"fc42b04d-5fe0-4fad-830b-db966a13e32a.zip"}},"environmentVariables":{"GOOGLE_NODE_RUN_SCRIPTS":""}},"serviceConfig":{"environmentVariables":{"FIREBASE_CONFIG":"{\"projectId\":\"aura-e6045\",\"storageBucket\":\"aura-e6045.firebasestorage.app\"}","GCLOUD_PROJECT":"aura-e6045","EVENTARC_CLOUD_EVENT_SOURCE":"projects/aura-e6045/locations/us-central1/services/processRecurringTransactions","FUNCTION_TARGET":"processRecurringTransactions","LOG_EXECUTION_ID":"true"},"ingressSettings":null,"timeoutSeconds":null,"serviceAccountEmail":null,"availableMemory":"256Mi","minInstanceCount":null,"maxInstanceCount":null,"maxInstanceRequestConcurrency":80,"availableCpu":"1","vpcConnector":null,"vpcConnectorEgressSettings":null},"labels":{"deployment-tool":"cli-firebase","deployment-scheduled":"true","firebase-functions-hash":"cad44508ec7f1f656ae0634103c4ee36b526111f"}}
+[debug] [2025-09-29T20:33:41.017Z] >>> [apiv2][query] DELETE https://cloudscheduler.googleapis.com/v1/projects/aura-e6045/locations/us-central1/jobs/firebase-schedule-createRecurringTransactions-us-central1 [none]
+[debug] [2025-09-29T20:33:42.310Z] <<< [apiv2][status] DELETE https://cloudscheduler.googleapis.com/v1/projects/aura-e6045/locations/us-central1/jobs/firebase-schedule-createRecurringTransactions-us-central1 200
+[debug] [2025-09-29T20:33:42.310Z] <<< [apiv2][body] DELETE https://cloudscheduler.googleapis.com/v1/projects/aura-e6045/locations/us-central1/jobs/firebase-schedule-createRecurringTransactions-us-central1 {}
+[debug] [2025-09-29T20:33:42.311Z] Checked if tokens are valid: true, expires at: 1759181436742
+[debug] [2025-09-29T20:33:42.311Z] Checked if tokens are valid: true, expires at: 1759181436742
+[debug] [2025-09-29T20:33:42.311Z] >>> [apiv2][query] DELETE https://cloudfunctions.googleapis.com/v2/projects/aura-e6045/locations/us-central1/functions/createRecurringTransactions [none]
+[debug] [2025-09-29T20:33:42.867Z] <<< [apiv2][status] POST https://cloudfunctions.googleapis.com/v2/projects/aura-e6045/locations/us-central1/functions 200
+[debug] [2025-09-29T20:33:42.868Z] <<< [apiv2][body] POST https://cloudfunctions.googleapis.com/v2/projects/aura-e6045/locations/us-central1/functions {"name":"projects/aura-e6045/locations/us-central1/operations/operation-1759178021979-63ff68d18c607-543c3828-46da7e03","metadata":{"@type":"type.googleapis.com/google.cloud.functions.v2.OperationMetadata","createTime":"2025-09-29T20:33:42.752062557Z","target":"projects/aura-e6045/locations/us-central1/functions/processRecurringTransactions","verb":"create","cancelRequested":false,"apiVersion":"v2"},"done":false}
+[debug] [2025-09-29T20:33:42.870Z] Checked if tokens are valid: true, expires at: 1759181436742
+[debug] [2025-09-29T20:33:42.870Z] Checked if tokens are valid: true, expires at: 1759181436742
+[debug] [2025-09-29T20:33:42.871Z] >>> [apiv2][query] GET https://cloudfunctions.googleapis.com/v2/projects/aura-e6045/locations/us-central1/operations/operation-1759178021979-63ff68d18c607-543c3828-46da7e03 [none]
+[debug] [2025-09-29T20:33:43.538Z] <<< [apiv2][status] DELETE https://cloudfunctions.googleapis.com/v2/projects/aura-e6045/locations/us-central1/functions/createRecurringTransactions 200
+[debug] [2025-09-29T20:33:43.539Z] <<< [apiv2][body] DELETE https://cloudfunctions.googleapis.com/v2/projects/aura-e6045/locations/us-central1/functions/createRecurringTransactions {"name":"projects/aura-e6045/locations/us-central1/operations/operation-1759178023388-63ff68d2e453c-a3862532-99dd6471","metadata":{"@type":"type.googleapis.com/google.cloud.functions.v2.OperationMetadata","createTime":"2025-09-29T20:33:43.408290229Z","target":"projects/aura-e6045/locations/us-central1/functions/createRecurringTransactions","verb":"delete","cancelRequested":false,"apiVersion":"v2"},"done":false}
+[debug] [2025-09-29T20:33:43.540Z] Checked if tokens are valid: true, expires at: 1759181436742
+[debug] [2025-09-29T20:33:43.540Z] Checked if tokens are valid: true, expires at: 1759181436742
+[debug] [2025-09-29T20:33:43.541Z] >>> [apiv2][query] GET https://cloudfunctions.googleapis.com/v2/projects/aura-e6045/locations/us-central1/operations/operation-1759178023388-63ff68d2e453c-a3862532-99dd6471 [none]
+[debug] [2025-09-29T20:33:43.825Z] <<< [apiv2][status] GET https://cloudfunctions.googleapis.com/v2/projects/aura-e6045/locations/us-central1/operations/operation-1759178021979-63ff68d18c607-543c3828-46da7e03 200
+[debug] [2025-09-29T20:33:43.826Z] <<< [apiv2][body] GET https://cloudfunctions.googleapis.com/v2/projects/aura-e6045/locations/us-central1/operations/operation-1759178021979-63ff68d18c607-543c3828-46da7e03 {"name":"projects/aura-e6045/locations/us-central1/operations/operation-1759178021979-63ff68d18c607-543c3828-46da7e03","metadata":{"@type":"type.googleapis.com/google.cloud.functions.v2.OperationMetadata","createTime":"2025-09-29T20:33:42.752062557Z","target":"projects/aura-e6045/locations/us-central1/functions/processRecurringTransactions","verb":"create","cancelRequested":false,"apiVersion":"v2","requestResource":{"@type":"type.googleapis.com/google.cloud.functions.v2.Function","name":"projects/aura-e6045/locations/us-central1/functions/processRecurringTransactions","buildConfig":{"runtime":"nodejs22","entryPoint":"processRecurringTransactions","source":{"storageSource":{"bucket":"gcf-v2-sources-733656810098-us-central1","object":"processRecurringTransactions/function-source.zip","generation":"1759178022293406"}},"environmentVariables":{"GOOGLE_NODE_RUN_SCRIPTS":""},"serviceAccount":"projects/aura-e6045/serviceAccounts/733656810098-compute@developer.gserviceaccount.com","automaticUpdatePolicy":{}},"serviceConfig":{"service":"projects/aura-e6045/locations/us-central1/services/processrecurringtransactions","timeoutSeconds":60,"environmentVariables":{"FIREBASE_CONFIG":"{\"projectId\":\"aura-e6045\",\"storageBucket\":\"aura-e6045.firebasestorage.app\"}","GCLOUD_PROJECT":"aura-e6045","EVENTARC_CLOUD_EVENT_SOURCE":"projects/aura-e6045/locations/us-central1/services/processRecurringTransactions","FUNCTION_TARGET":"processRecurringTransactions","LOG_EXECUTION_ID":"true"},"ingressSettings":"ALLOW_ALL","serviceAccountEmail":"733656810098-compute@developer.gserviceaccount.com","availableMemory":"256Mi","maxInstanceRequestConcurrency":80,"availableCpu":"1"},"labels":{"deployment-tool":"cli-firebase","deployment-scheduled":"true","firebase-functions-hash":"cad44508ec7f1f656ae0634103c4ee36b526111f"},"environment":"GEN_2"},"stages":[{"name":"BUILD","state":"NOT_STARTED"},{"name":"SERVICE","state":"NOT_STARTED"}],"operationType":"CREATE_FUNCTION"},"done":false}
+[debug] [2025-09-29T20:33:44.342Z] [create-default-us-central1-processRecurringTransactions] Retrying task index 0
+[debug] [2025-09-29T20:33:44.343Z] Checked if tokens are valid: true, expires at: 1759181436742
+[debug] [2025-09-29T20:33:44.343Z] Checked if tokens are valid: true, expires at: 1759181436742
+[debug] [2025-09-29T20:33:44.344Z] >>> [apiv2][query] GET https://cloudfunctions.googleapis.com/v2/projects/aura-e6045/locations/us-central1/operations/operation-1759178021979-63ff68d18c607-543c3828-46da7e03 [none]
+[debug] [2025-09-29T20:33:44.625Z] <<< [apiv2][status] GET https://cloudfunctions.googleapis.com/v2/projects/aura-e6045/locations/us-central1/operations/operation-1759178023388-63ff68d2e453c-a3862532-99dd6471 200
+[debug] [2025-09-29T20:33:44.626Z] <<< [apiv2][body] GET https://cloudfunctions.googleapis.com/v2/projects/aura-e6045/locations/us-central1/operations/operation-1759178023388-63ff68d2e453c-a3862532-99dd6471 {"name":"projects/aura-e6045/locations/us-central1/operations/operation-1759178023388-63ff68d2e453c-a3862532-99dd6471","metadata":{"@type":"type.googleapis.com/google.cloud.functions.v2.OperationMetadata","createTime":"2025-09-29T20:33:43.408290229Z","target":"projects/aura-e6045/locations/us-central1/functions/createRecurringTransactions","verb":"delete","cancelRequested":false,"apiVersion":"v2","requestResource":{"@type":"type.googleapis.com/google.cloud.functions.v2.Function","name":"projects/aura-e6045/locations/us-central1/functions/createRecurringTransactions","environment":"GEN_2"},"stages":[{"name":"ARTIFACT_REGISTRY","state":"NOT_STARTED"},{"name":"SERVICE","message":"Deleting Cloud Run service","state":"IN_PROGRESS","resource":"projects/aura-e6045/locations/us-central1/services/createrecurringtransactions"}],"operationType":"DELETE_FUNCTION"},"done":false}
+[debug] [2025-09-29T20:33:45.143Z] [delete-default-us-central1-createRecurringTransactions] Retrying task index 0
+[debug] [2025-09-29T20:33:45.144Z] Checked if tokens are valid: true, expires at: 1759181436742
+[debug] [2025-09-29T20:33:45.144Z] Checked if tokens are valid: true, expires at: 1759181436742
+[debug] [2025-09-29T20:33:45.145Z] >>> [apiv2][query] GET https://cloudfunctions.googleapis.com/v2/projects/aura-e6045/locations/us-central1/operations/operation-1759178023388-63ff68d2e453c-a3862532-99dd6471 [none]
+[debug] [2025-09-29T20:33:45.447Z] <<< [apiv2][status] GET https://cloudfunctions.googleapis.com/v2/projects/aura-e6045/locations/us-central1/operations/operation-1759178021979-63ff68d18c607-543c3828-46da7e03 200
+[debug] [2025-09-29T20:33:45.447Z] <<< [apiv2][body] GET https://cloudfunctions.googleapis.com/v2/projects/aura-e6045/locations/us-central1/operations/operation-1759178021979-63ff68d18c607-543c3828-46da7e03 {"name":"projects/aura-e6045/locations/us-central1/operations/operation-1759178021979-63ff68d18c607-543c3828-46da7e03","metadata":{"@type":"type.googleapis.com/google.cloud.functions.v2.OperationMetadata","createTime":"2025-09-29T20:33:42.752062557Z","target":"projects/aura-e6045/locations/us-central1/functions/processRecurringTransactions","verb":"create","cancelRequested":false,"apiVersion":"v2","requestResource":{"@type":"type.googleapis.com/google.cloud.functions.v2.Function","name":"projects/aura-e6045/locations/us-central1/functions/processRecurringTransactions","buildConfig":{"runtime":"nodejs22","entryPoint":"processRecurringTransactions","source":{"storageSource":{"bucket":"gcf-v2-sources-733656810098-us-central1","object":"processRecurringTransactions/function-source.zip","generation":"1759178022293406"}},"environmentVariables":{"GOOGLE_NODE_RUN_SCRIPTS":""},"serviceAccount":"projects/aura-e6045/serviceAccounts/733656810098-compute@developer.gserviceaccount.com","automaticUpdatePolicy":{}},"serviceConfig":{"service":"projects/aura-e6045/locations/us-central1/services/processrecurringtransactions","timeoutSeconds":60,"environmentVariables":{"FIREBASE_CONFIG":"{\"projectId\":\"aura-e6045\",\"storageBucket\":\"aura-e6045.firebasestorage.app\"}","GCLOUD_PROJECT":"aura-e6045","EVENTARC_CLOUD_EVENT_SOURCE":"projects/aura-e6045/locations/us-central1/services/processRecurringTransactions","FUNCTION_TARGET":"processRecurringTransactions","LOG_EXECUTION_ID":"true"},"ingressSettings":"ALLOW_ALL","serviceAccountEmail":"733656810098-compute@developer.gserviceaccount.com","availableMemory":"256Mi","maxInstanceRequestConcurrency":80,"availableCpu":"1"},"labels":{"deployment-tool":"cli-firebase","deployment-scheduled":"true","firebase-functions-hash":"cad44508ec7f1f656ae0634103c4ee36b526111f"},"environment":"GEN_2"},"stages":[{"name":"BUILD","message":"Build in progress","state":"IN_PROGRESS","resource":"projects/733656810098/locations/us-central1/builds/153f907b-407b-4a2e-867b-8aafa81dd6ea","resourceUri":"https://console.cloud.google.com/cloud-build/builds;region=us-central1/153f907b-407b-4a2e-867b-8aafa81dd6ea?project=733656810098"},{"name":"SERVICE","state":"NOT_STARTED"}],"operationType":"CREATE_FUNCTION","buildName":"projects/733656810098/locations/us-central1/builds/153f907b-407b-4a2e-867b-8aafa81dd6ea"},"done":false}
+[debug] [2025-09-29T20:33:46.113Z] <<< [apiv2][status] GET https://cloudfunctions.googleapis.com/v2/projects/aura-e6045/locations/us-central1/operations/operation-1759178023388-63ff68d2e453c-a3862532-99dd6471 200
+[debug] [2025-09-29T20:33:46.114Z] <<< [apiv2][body] GET https://cloudfunctions.googleapis.com/v2/projects/aura-e6045/locations/us-central1/operations/operation-1759178023388-63ff68d2e453c-a3862532-99dd6471 {"name":"projects/aura-e6045/locations/us-central1/operations/operation-1759178023388-63ff68d2e453c-a3862532-99dd6471","metadata":{"@type":"type.googleapis.com/google.cloud.functions.v2.OperationMetadata","createTime":"2025-09-29T20:33:43.408290229Z","target":"projects/aura-e6045/locations/us-central1/functions/createRecurringTransactions","verb":"delete","cancelRequested":false,"apiVersion":"v2","requestResource":{"@type":"type.googleapis.com/google.cloud.functions.v2.Function","name":"projects/aura-e6045/locations/us-central1/functions/createRecurringTransactions","environment":"GEN_2"},"stages":[{"name":"ARTIFACT_REGISTRY","state":"NOT_STARTED"},{"name":"SERVICE","message":"Deleting Cloud Run service","state":"COMPLETE","resource":"projects/aura-e6045/locations/us-central1/services/createrecurringtransactions"}],"operationType":"DELETE_FUNCTION"},"done":false}
+[debug] [2025-09-29T20:33:46.459Z] [create-default-us-central1-processRecurringTransactions] Retrying task index 0
+[debug] [2025-09-29T20:33:46.461Z] Checked if tokens are valid: true, expires at: 1759181436742
+[debug] [2025-09-29T20:33:46.461Z] Checked if tokens are valid: true, expires at: 1759181436742
+[debug] [2025-09-29T20:33:46.462Z] >>> [apiv2][query] GET https://cloudfunctions.googleapis.com/v2/projects/aura-e6045/locations/us-central1/operations/operation-1759178021979-63ff68d18c607-543c3828-46da7e03 [none]
+[debug] [2025-09-29T20:33:47.129Z] [delete-default-us-central1-createRecurringTransactions] Retrying task index 0
+[debug] [2025-09-29T20:33:47.131Z] Checked if tokens are valid: true, expires at: 1759181436742
+[debug] [2025-09-29T20:33:47.131Z] Checked if tokens are valid: true, expires at: 1759181436742
+[debug] [2025-09-29T20:33:47.132Z] >>> [apiv2][query] GET https://cloudfunctions.googleapis.com/v2/projects/aura-e6045/locations/us-central1/operations/operation-1759178023388-63ff68d2e453c-a3862532-99dd6471 [none]
+[debug] [2025-09-29T20:33:47.413Z] <<< [apiv2][status] GET https://cloudfunctions.googleapis.com/v2/projects/aura-e6045/locations/us-central1/operations/operation-1759178023388-63ff68d2e453c-a3862532-99dd6471 200
+[debug] [2025-09-29T20:33:47.414Z] <<< [apiv2][body] GET https://cloudfunctions.googleapis.com/v2/projects/aura-e6045/locations/us-central1/operations/operation-1759178023388-63ff68d2e453c-a3862532-99dd6471 {"name":"projects/aura-e6045/locations/us-central1/operations/operation-1759178023388-63ff68d2e453c-a3862532-99dd6471","metadata":{"@type":"type.googleapis.com/google.cloud.functions.v2.OperationMetadata","createTime":"2025-09-29T20:33:43.408290229Z","endTime":"2025-09-29T20:33:46.459596704Z","target":"projects/aura-e6045/locations/us-central1/functions/createRecurringTransactions","verb":"delete","cancelRequested":false,"apiVersion":"v2","requestResource":{"@type":"type.googleapis.com/google.cloud.functions.v2.Function","name":"projects/aura-e6045/locations/us-central1/functions/createRecurringTransactions","environment":"GEN_2"},"stages":[{"name":"ARTIFACT_REGISTRY","message":"Deleting function artifacts in Artifact Registry","state":"COMPLETE"},{"name":"SERVICE","message":"Deleting Cloud Run service","state":"COMPLETE","resource":"projects/aura-e6045/locations/us-central1/services/createrecurringtransactions"}],"operationType":"DELETE_FUNCTION"},"done":true,"response":{"@type":"type.googleapis.com/google.protobuf.Empty"}}
+[info] +  functions[createRecurringTransactions(us-central1)] Successful delete operation. 
+[debug] [2025-09-29T20:33:47.595Z] <<< [apiv2][status] GET https://cloudfunctions.googleapis.com/v2/projects/aura-e6045/locations/us-central1/operations/operation-1759178021979-63ff68d18c607-543c3828-46da7e03 200
+[debug] [2025-09-29T20:33:47.596Z] <<< [apiv2][body] GET https://cloudfunctions.googleapis.com/v2/projects/aura-e6045/locations/us-central1/operations/operation-1759178021979-63ff68d18c607-543c3828-46da7e03 {"name":"projects/aura-e6045/locations/us-central1/operations/operation-1759178021979-63ff68d18c607-543c3828-46da7e03","metadata":{"@type":"type.googleapis.com/google.cloud.functions.v2.OperationMetadata","createTime":"2025-09-29T20:33:42.752062557Z","target":"projects/aura-e6045/locations/us-central1/functions/processRecurringTransactions","verb":"create","cancelRequested":false,"apiVersion":"v2","requestResource":{"@type":"type.googleapis.com/google.cloud.functions.v2.Function","name":"projects/aura-e6045/locations/us-central1/functions/processRecurringTransactions","buildConfig":{"runtime":"nodejs22","entryPoint":"processRecurringTransactions","source":{"storageSource":{"bucket":"gcf-v2-sources-733656810098-us-central1","object":"processRecurringTransactions/function-source.zip","generation":"1759178022293406"}},"environmentVariables":{"GOOGLE_NODE_RUN_SCRIPTS":""},"serviceAccount":"projects/aura-e6045/serviceAccounts/733656810098-compute@developer.gserviceaccount.com","automaticUpdatePolicy":{}},"serviceConfig":{"service":"projects/aura-e6045/locations/us-central1/services/processrecurringtransactions","timeoutSeconds":60,"environmentVariables":{"FIREBASE_CONFIG":"{\"projectId\":\"aura-e6045\",\"storageBucket\":\"aura-e6045.firebasestorage.app\"}","GCLOUD_PROJECT":"aura-e6045","EVENTARC_CLOUD_EVENT_SOURCE":"projects/aura-e6045/locations/us-central1/services/processRecurringTransactions","FUNCTION_TARGET":"processRecurringTransactions","LOG_EXECUTION_ID":"true"},"ingressSettings":"ALLOW_ALL","serviceAccountEmail":"733656810098-compute@developer.gserviceaccount.com","availableMemory":"256Mi","maxInstanceRequestConcurrency":80,"availableCpu":"1"},"labels":{"deployment-tool":"cli-firebase","deployment-scheduled":"true","firebase-functions-hash":"cad44508ec7f1f656ae0634103c4ee36b526111f"},"environment":"GEN_2"},"stages":[{"name":"BUILD","message":"Build in progress","state":"IN_PROGRESS","resource":"projects/733656810098/locations/us-central1/builds/153f907b-407b-4a2e-867b-8aafa81dd6ea","resourceUri":"https://console.cloud.google.com/cloud-build/builds;region=us-central1/153f907b-407b-4a2e-867b-8aafa81dd6ea?project=733656810098"},{"name":"SERVICE","state":"NOT_STARTED"}],"operationType":"CREATE_FUNCTION","buildName":"projects/733656810098/locations/us-central1/builds/153f907b-407b-4a2e-867b-8aafa81dd6ea"},"done":false}
+[debug] [2025-09-29T20:33:49.603Z] [create-default-us-central1-processRecurringTransactions] Retrying task index 0
+[debug] [2025-09-29T20:33:49.604Z] Checked if tokens are valid: true, expires at: 1759181436742
+[debug] [2025-09-29T20:33:49.605Z] Checked if tokens are valid: true, expires at: 1759181436742
+[debug] [2025-09-29T20:33:49.605Z] >>> [apiv2][query] GET https://cloudfunctions.googleapis.com/v2/projects/aura-e6045/locations/us-central1/operations/operation-1759178021979-63ff68d18c607-543c3828-46da7e03 [none]
+[debug] [2025-09-29T20:33:50.572Z] <<< [apiv2][status] GET https://cloudfunctions.googleapis.com/v2/projects/aura-e6045/locations/us-central1/operations/operation-1759178021979-63ff68d18c607-543c3828-46da7e03 200
+[debug] [2025-09-29T20:33:50.573Z] <<< [apiv2][body] GET https://cloudfunctions.googleapis.com/v2/projects/aura-e6045/locations/us-central1/operations/operation-1759178021979-63ff68d18c607-543c3828-46da7e03 {"name":"projects/aura-e6045/locations/us-central1/operations/operation-1759178021979-63ff68d18c607-543c3828-46da7e03","metadata":{"@type":"type.googleapis.com/google.cloud.functions.v2.OperationMetadata","createTime":"2025-09-29T20:33:42.752062557Z","target":"projects/aura-e6045/locations/us-central1/functions/processRecurringTransactions","verb":"create","cancelRequested":false,"apiVersion":"v2","requestResource":{"@type":"type.googleapis.com/google.cloud.functions.v2.Function","name":"projects/aura-e6045/locations/us-central1/functions/processRecurringTransactions","buildConfig":{"runtime":"nodejs22","entryPoint":"processRecurringTransactions","source":{"storageSource":{"bucket":"gcf-v2-sources-733656810098-us-central1","object":"processRecurringTransactions/function-source.zip","generation":"1759178022293406"}},"environmentVariables":{"GOOGLE_NODE_RUN_SCRIPTS":""},"serviceAccount":"projects/aura-e6045/serviceAccounts/733656810098-compute@developer.gserviceaccount.com","automaticUpdatePolicy":{}},"serviceConfig":{"service":"projects/aura-e6045/locations/us-central1/services/processrecurringtransactions","timeoutSeconds":60,"environmentVariables":{"FIREBASE_CONFIG":"{\"projectId\":\"aura-e6045\",\"storageBucket\":\"aura-e6045.firebasestorage.app\"}","GCLOUD_PROJECT":"aura-e6045","EVENTARC_CLOUD_EVENT_SOURCE":"projects/aura-e6045/locations/us-central1/services/processRecurringTransactions","FUNCTION_TARGET":"processRecurringTransactions","LOG_EXECUTION_ID":"true"},"ingressSettings":"ALLOW_ALL","serviceAccountEmail":"733656810098-compute@developer.gserviceaccount.com","availableMemory":"256Mi","maxInstanceRequestConcurrency":80,"availableCpu":"1"},"labels":{"deployment-tool":"cli-firebase","deployment-scheduled":"true","firebase-functions-hash":"cad44508ec7f1f656ae0634103c4ee36b526111f"},"environment":"GEN_2"},"stages":[{"name":"BUILD","message":"Build in progress","state":"IN_PROGRESS","resource":"projects/733656810098/locations/us-central1/builds/153f907b-407b-4a2e-867b-8aafa81dd6ea","resourceUri":"https://console.cloud.google.com/cloud-build/builds;region=us-central1/153f907b-407b-4a2e-867b-8aafa81dd6ea?project=733656810098"},{"name":"SERVICE","state":"NOT_STARTED"}],"operationType":"CREATE_FUNCTION","buildName":"projects/733656810098/locations/us-central1/builds/153f907b-407b-4a2e-867b-8aafa81dd6ea"},"done":false}
+[debug] [2025-09-29T20:33:54.577Z] [create-default-us-central1-processRecurringTransactions] Retrying task index 0
+[debug] [2025-09-29T20:33:54.579Z] Checked if tokens are valid: true, expires at: 1759181436742
+[debug] [2025-09-29T20:33:54.579Z] Checked if tokens are valid: true, expires at: 1759181436742
+[debug] [2025-09-29T20:33:54.579Z] >>> [apiv2][query] GET https://cloudfunctions.googleapis.com/v2/projects/aura-e6045/locations/us-central1/operations/operation-1759178021979-63ff68d18c607-543c3828-46da7e03 [none]
+[debug] [2025-09-29T20:33:55.540Z] <<< [apiv2][status] GET https://cloudfunctions.googleapis.com/v2/projects/aura-e6045/locations/us-central1/operations/operation-1759178021979-63ff68d18c607-543c3828-46da7e03 200
+[debug] [2025-09-29T20:33:55.541Z] <<< [apiv2][body] GET https://cloudfunctions.googleapis.com/v2/projects/aura-e6045/locations/us-central1/operations/operation-1759178021979-63ff68d18c607-543c3828-46da7e03 {"name":"projects/aura-e6045/locations/us-central1/operations/operation-1759178021979-63ff68d18c607-543c3828-46da7e03","metadata":{"@type":"type.googleapis.com/google.cloud.functions.v2.OperationMetadata","createTime":"2025-09-29T20:33:42.752062557Z","target":"projects/aura-e6045/locations/us-central1/functions/processRecurringTransactions","verb":"create","cancelRequested":false,"apiVersion":"v2","requestResource":{"@type":"type.googleapis.com/google.cloud.functions.v2.Function","name":"projects/aura-e6045/locations/us-central1/functions/processRecurringTransactions","buildConfig":{"runtime":"nodejs22","entryPoint":"processRecurringTransactions","source":{"storageSource":{"bucket":"gcf-v2-sources-733656810098-us-central1","object":"processRecurringTransactions/function-source.zip","generation":"1759178022293406"}},"environmentVariables":{"GOOGLE_NODE_RUN_SCRIPTS":""},"serviceAccount":"projects/aura-e6045/serviceAccounts/733656810098-compute@developer.gserviceaccount.com","automaticUpdatePolicy":{}},"serviceConfig":{"service":"projects/aura-e6045/locations/us-central1/services/processrecurringtransactions","timeoutSeconds":60,"environmentVariables":{"FIREBASE_CONFIG":"{\"projectId\":\"aura-e6045\",\"storageBucket\":\"aura-e6045.firebasestorage.app\"}","GCLOUD_PROJECT":"aura-e6045","EVENTARC_CLOUD_EVENT_SOURCE":"projects/aura-e6045/locations/us-central1/services/processRecurringTransactions","FUNCTION_TARGET":"processRecurringTransactions","LOG_EXECUTION_ID":"true"},"ingressSettings":"ALLOW_ALL","serviceAccountEmail":"733656810098-compute@developer.gserviceaccount.com","availableMemory":"256Mi","maxInstanceRequestConcurrency":80,"availableCpu":"1"},"labels":{"deployment-tool":"cli-firebase","deployment-scheduled":"true","firebase-functions-hash":"cad44508ec7f1f656ae0634103c4ee36b526111f"},"environment":"GEN_2"},"stages":[{"name":"BUILD","message":"Build in progress","state":"IN_PROGRESS","resource":"projects/733656810098/locations/us-central1/builds/153f907b-407b-4a2e-867b-8aafa81dd6ea","resourceUri":"https://console.cloud.google.com/cloud-build/builds;region=us-central1/153f907b-407b-4a2e-867b-8aafa81dd6ea?project=733656810098"},{"name":"SERVICE","state":"NOT_STARTED"}],"operationType":"CREATE_FUNCTION","buildName":"projects/733656810098/locations/us-central1/builds/153f907b-407b-4a2e-867b-8aafa81dd6ea"},"done":false}
+[debug] [2025-09-29T20:34:03.540Z] [create-default-us-central1-processRecurringTransactions] Retrying task index 0
+[debug] [2025-09-29T20:34:03.541Z] Checked if tokens are valid: true, expires at: 1759181436742
+[debug] [2025-09-29T20:34:03.542Z] Checked if tokens are valid: true, expires at: 1759181436742
+[debug] [2025-09-29T20:34:03.542Z] >>> [apiv2][query] GET https://cloudfunctions.googleapis.com/v2/projects/aura-e6045/locations/us-central1/operations/operation-1759178021979-63ff68d18c607-543c3828-46da7e03 [none]
+[debug] [2025-09-29T20:34:04.629Z] <<< [apiv2][status] GET https://cloudfunctions.googleapis.com/v2/projects/aura-e6045/locations/us-central1/operations/operation-1759178021979-63ff68d18c607-543c3828-46da7e03 200
+[debug] [2025-09-29T20:34:04.630Z] <<< [apiv2][body] GET https://cloudfunctions.googleapis.com/v2/projects/aura-e6045/locations/us-central1/operations/operation-1759178021979-63ff68d18c607-543c3828-46da7e03 {"name":"projects/aura-e6045/locations/us-central1/operations/operation-1759178021979-63ff68d18c607-543c3828-46da7e03","metadata":{"@type":"type.googleapis.com/google.cloud.functions.v2.OperationMetadata","createTime":"2025-09-29T20:33:42.752062557Z","endTime":"2025-09-29T20:34:02.045057727Z","target":"projects/aura-e6045/locations/us-central1/functions/processRecurringTransactions","verb":"create","cancelRequested":false,"apiVersion":"v2","requestResource":{"@type":"type.googleapis.com/google.cloud.functions.v2.Function","name":"projects/aura-e6045/locations/us-central1/functions/processRecurringTransactions","buildConfig":{"runtime":"nodejs22","entryPoint":"processRecurringTransactions","source":{"storageSource":{"bucket":"gcf-v2-sources-733656810098-us-central1","object":"processRecurringTransactions/function-source.zip","generation":"1759178022293406"}},"environmentVariables":{"GOOGLE_NODE_RUN_SCRIPTS":""},"serviceAccount":"projects/aura-e6045/serviceAccounts/733656810098-compute@developer.gserviceaccount.com","automaticUpdatePolicy":{}},"serviceConfig":{"service":"projects/aura-e6045/locations/us-central1/services/processrecurringtransactions","timeoutSeconds":60,"environmentVariables":{"FIREBASE_CONFIG":"{\"projectId\":\"aura-e6045\",\"storageBucket\":\"aura-e6045.firebasestorage.app\"}","GCLOUD_PROJECT":"aura-e6045","EVENTARC_CLOUD_EVENT_SOURCE":"projects/aura-e6045/locations/us-central1/services/processRecurringTransactions","FUNCTION_TARGET":"processRecurringTransactions","LOG_EXECUTION_ID":"true"},"ingressSettings":"ALLOW_ALL","serviceAccountEmail":"733656810098-compute@developer.gserviceaccount.com","availableMemory":"256Mi","maxInstanceRequestConcurrency":80,"availableCpu":"1"},"labels":{"deployment-tool":"cli-firebase","deployment-scheduled":"true","firebase-functions-hash":"cad44508ec7f1f656ae0634103c4ee36b526111f"},"environment":"GEN_2"},"stages":[{"name":"ARTIFACT_REGISTRY","message":"Deleting function artifacts in Artifact Registry","state":"COMPLETE"},{"name":"SERVICE","message":"Deleting Cloud Run service","state":"COMPLETE","resource":"projects/aura-e6045/locations/us-central1/services/processrecurringtransactions"}],"operationType":"CREATE_FUNCTION"},"done":true,"error":{"code":3,"message":"Build failed with status: FAILURE. Could not build the function due to a missing permission on the build service account. If you didn't revoke that permission explicitly, this could be caused by a change in the organization policies. Please refer to the following documentation for more details and resolution: https://cloud.google.com/functions/docs/troubleshooting#build-service-account\n You can also view the logs at https://console.cloud.google.com/cloud-build/builds;region=us-central1/153f907b-407b-4a2e-867b-8aafa81dd6ea?project=733656810098.\n"}}
+[debug] [2025-09-29T20:34:04.631Z] Got source token undefined for region us-central1
+[error] Build failed with status: FAILURE. Could not build the function due to a missing permission on the build service account. If you didn't revoke that permission explicitly, this could be caused by a change in the organization policies. Please refer to the following documentation for more details and resolution: https://cloud.google.com/functions/docs/troubleshooting#build-service-account
+ You can also view the logs at https://console.cloud.google.com/cloud-build/builds;region=us-central1/153f907b-407b-4a2e-867b-8aafa81dd6ea?project=733656810098.
+
+[debug] [2025-09-29T20:34:04.647Z] Total Function Deployment time: 23630
+[debug] [2025-09-29T20:34:04.647Z] 2 Functions Deployed
+[debug] [2025-09-29T20:34:04.648Z] 1 Functions Errored
+[debug] [2025-09-29T20:34:04.648Z] 0 Function Deployments Aborted
+[debug] [2025-09-29T20:34:04.648Z] Average Function Deployment time: 15015
+[info] 
+[info] Functions deploy had errors with the following functions:
+	processRecurringTransactions(us-central1)
+[debug] [2025-09-29T20:34:04.836Z] Checked if tokens are valid: true, expires at: 1759181436742
+[debug] [2025-09-29T20:34:04.837Z] Checked if tokens are valid: true, expires at: 1759181436742
+[debug] [2025-09-29T20:34:04.837Z] >>> [apiv2][query] GET https://artifactregistry.googleapis.com/v1/projects/aura-e6045/locations/us-central1/repositories/gcf-artifacts [none]
+[debug] [2025-09-29T20:34:05.957Z] <<< [apiv2][status] GET https://artifactregistry.googleapis.com/v1/projects/aura-e6045/locations/us-central1/repositories/gcf-artifacts 200
+[debug] [2025-09-29T20:34:05.957Z] <<< [apiv2][body] GET https://artifactregistry.googleapis.com/v1/projects/aura-e6045/locations/us-central1/repositories/gcf-artifacts {"name":"projects/aura-e6045/locations/us-central1/repositories/gcf-artifacts","format":"DOCKER","description":"This repository is created and used by Cloud Functions for storing function docker images.","labels":{"goog-managed-by":"cloudfunctions"},"createTime":"2025-07-22T17:24:44.006894Z","updateTime":"2025-09-29T20:33:46.292642Z","mode":"STANDARD_REPOSITORY","cleanupPolicies":{"firebase-functions-cleanup":{"id":"firebase-functions-cleanup","action":"DELETE","condition":{"tagState":"ANY","olderThan":"86400s"}}},"vulnerabilityScanningConfig":{"lastEnableTime":"2025-07-22T17:24:35.678757594Z","enablementState":"SCANNING_DISABLED","enablementStateReason":"API containerscanning.googleapis.com is not enabled."},"satisfiesPzi":true,"registryUri":"us-central1-docker.pkg.dev/aura-e6045/gcf-artifacts"}
+[debug] [2025-09-29T20:34:05.958Z] Functions deploy failed.
+[debug] [2025-09-29T20:34:05.958Z] {
+  "endpoint": {
+    "id": "processRecurringTransactions",
+    "project": "aura-e6045",
+    "region": "us-central1",
+    "entryPoint": "processRecurringTransactions",
+    "platform": "gcfv2",
+    "runtime": "nodejs22",
+    "scheduleTrigger": {
+      "schedule": "every day 01:00",
+      "timeZone": "America/Sao_Paulo",
+      "retryConfig": {}
+    },
+    "labels": {
+      "deployment-tool": "cli-firebase"
+    },
+    "serviceAccount": null,
+    "ingressSettings": null,
+    "availableMemoryMb": null,
+    "timeoutSeconds": null,
+    "maxInstances": null,
+    "minInstances": null,
+    "concurrency": 80,
+    "vpc": null,
+    "environmentVariables": {
+      "FIREBASE_CONFIG": "{\"projectId\":\"aura-e6045\",\"storageBucket\":\"aura-e6045.firebasestorage.app\"}",
+      "GCLOUD_PROJECT": "aura-e6045",
+      "EVENTARC_CLOUD_EVENT_SOURCE": "projects/aura-e6045/locations/us-central1/services/processRecurringTransactions"
+    },
+    "codebase": "default",
+    "cpu": 1,
+    "targetedByOnly": false,
+    "hash": "cad44508ec7f1f656ae0634103c4ee36b526111f"
+  },
+  "op": "create",
+  "original": {
+    "name": "FirebaseError",
+    "children": [],
+    "exit": 1,
+    "message": "Build failed with status: FAILURE. Could not build the function due to a missing permission on the build service account. If you didn't revoke that permission explicitly, this could be caused by a change in the organization policies. Please refer to the following documentation for more details and resolution: https://cloud.google.com/functions/docs/troubleshooting#build-service-account\n You can also view the logs at https://console.cloud.google.com/cloud-build/builds;region=us-central1/153f907b-407b-4a2e-867b-8aafa81dd6ea?project=733656810098.\n",
+    "original": {
+      "code": 3,
+      "message": "Build failed with status: FAILURE. Could not build the function due to a missing permission on the build service account. If you didn't revoke that permission explicitly, this could be caused by a change in the organization policies. Please refer to the following documentation for more details and resolution: https://cloud.google.com/functions/docs/troubleshooting#build-service-account\n You can also view the logs at https://console.cloud.google.com/cloud-build/builds;region=us-central1/153f907b-407b-4a2e-867b-8aafa81dd6ea?project=733656810098.\n"
+    },
+    "status": 3,
+    "code": 3
+  }
+}
+[debug] [2025-09-29T20:34:06.035Z] Error: Failed to create function processRecurringTransactions in region us-central1
+    at C:\Users\moniq\AppData\Roaming\npm\node_modules\firebase-tools\lib\deploy\functions\release\fabricator.js:306:27
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async Fabricator.createV2Function (C:\Users\moniq\AppData\Roaming\npm\node_modules\firebase-tools\lib\deploy\functions\release\fabricator.js:290:30)
+    at async Fabricator.createEndpoint (C:\Users\moniq\AppData\Roaming\npm\node_modules\firebase-tools\lib\deploy\functions\release\fabricator.js:137:13)
+    at async handle (C:\Users\moniq\AppData\Roaming\npm\node_modules\firebase-tools\lib\deploy\functions\release\fabricator.js:89:17)
+[error] 
+[error] Error: There was an error deploying functions
+[debug] [2025-09-29T21:11:03.676Z] ----------------------------------------------------------------------
+[debug] [2025-09-29T21:11:03.692Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\moniq\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js deploy --only functions
+[debug] [2025-09-29T21:11:03.693Z] CLI Version:   14.17.0
+[debug] [2025-09-29T21:11:03.693Z] Platform:      win32
+[debug] [2025-09-29T21:11:03.693Z] Node Version:  v20.19.5
+[debug] [2025-09-29T21:11:03.693Z] Time:          Mon Sep 29 2025 18:11:03 GMT-0300 (Horário Padrão de Brasília)
+[debug] [2025-09-29T21:11:03.693Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2025-09-29T21:11:03.932Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-09-29T21:11:03.933Z] > authorizing via signed-in user (moniquead95@gmail.com)
+[debug] [2025-09-29T21:11:03.933Z] [iam] checking project aura-e6045 for permissions ["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","firebase.projects.get"]
+[debug] [2025-09-29T21:11:03.934Z] Checked if tokens are valid: true, expires at: 1759181436742
+[debug] [2025-09-29T21:11:03.935Z] Checked if tokens are valid: true, expires at: 1759181436742
+[debug] [2025-09-29T21:11:03.936Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/aura-e6045:testIamPermissions [none]
+[debug] [2025-09-29T21:11:03.936Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/aura-e6045:testIamPermissions x-goog-quota-user=projects/aura-e6045
+[debug] [2025-09-29T21:11:03.936Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/aura-e6045:testIamPermissions {"permissions":["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","firebase.projects.get"]}
+[debug] [2025-09-29T21:11:04.942Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/aura-e6045:testIamPermissions 200
+[debug] [2025-09-29T21:11:04.943Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/aura-e6045:testIamPermissions {"permissions":["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","firebase.projects.get"]}
+[debug] [2025-09-29T21:11:04.943Z] Checked if tokens are valid: true, expires at: 1759181436742
+[debug] [2025-09-29T21:11:04.944Z] Checked if tokens are valid: true, expires at: 1759181436742
+[debug] [2025-09-29T21:11:04.944Z] >>> [apiv2][query] POST https://iam.googleapis.com/v1/projects/aura-e6045/serviceAccounts/aura-e6045@appspot.gserviceaccount.com:testIamPermissions [none]
+[debug] [2025-09-29T21:11:04.944Z] >>> [apiv2][body] POST https://iam.googleapis.com/v1/projects/aura-e6045/serviceAccounts/aura-e6045@appspot.gserviceaccount.com:testIamPermissions {"permissions":["iam.serviceAccounts.actAs"]}
+[debug] [2025-09-29T21:11:05.859Z] <<< [apiv2][status] POST https://iam.googleapis.com/v1/projects/aura-e6045/serviceAccounts/aura-e6045@appspot.gserviceaccount.com:testIamPermissions 200
+[debug] [2025-09-29T21:11:05.860Z] <<< [apiv2][body] POST https://iam.googleapis.com/v1/projects/aura-e6045/serviceAccounts/aura-e6045@appspot.gserviceaccount.com:testIamPermissions {"permissions":["iam.serviceAccounts.actAs"]}
+[info] 
+[info] === Deploying to 'aura-e6045'...
+[info] 
+[info] i  deploying functions 
+[info] Running command: npm run build
+[info] +  functions: Finished running predeploy script. 
+[debug] [2025-09-29T21:11:13.981Z] Checked if tokens are valid: true, expires at: 1759181436742
+[debug] [2025-09-29T21:11:13.981Z] Checked if tokens are valid: true, expires at: 1759181436742
+[debug] [2025-09-29T21:11:13.981Z] >>> [apiv2][query] GET https://cloudresourcemanager.googleapis.com/v1/projects/aura-e6045 [none]
+[debug] [2025-09-29T21:11:14.883Z] <<< [apiv2][status] GET https://cloudresourcemanager.googleapis.com/v1/projects/aura-e6045 200
+[debug] [2025-09-29T21:11:14.883Z] <<< [apiv2][body] GET https://cloudresourcemanager.googleapis.com/v1/projects/aura-e6045 {"projectNumber":"733656810098","projectId":"aura-e6045","lifecycleState":"ACTIVE","name":"Aura","labels":{"firebase":"enabled","firebase-core":"disabled"},"createTime":"2025-07-21T16:49:02.468354Z"}
+[info] i  functions: preparing codebase default for deployment 
+[info] i  functions: ensuring required API cloudfunctions.googleapis.com is enabled... 
+[info] i  functions: ensuring required API cloudbuild.googleapis.com is enabled... 
+[info] i  artifactregistry: ensuring required API artifactregistry.googleapis.com is enabled... 
+[debug] [2025-09-29T21:11:14.887Z] Checked if tokens are valid: true, expires at: 1759181436742
+[debug] [2025-09-29T21:11:14.888Z] Checked if tokens are valid: true, expires at: 1759181436742
+[debug] [2025-09-29T21:11:14.888Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/aura-e6045/adminSdkConfig [none]
+[debug] [2025-09-29T21:11:15.336Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/aura-e6045/adminSdkConfig 200
+[debug] [2025-09-29T21:11:15.336Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/aura-e6045/adminSdkConfig {"projectId":"aura-e6045","storageBucket":"aura-e6045.firebasestorage.app"}
+[debug] [2025-09-29T21:11:15.337Z] Checked if tokens are valid: true, expires at: 1759181436742
+[debug] [2025-09-29T21:11:15.337Z] Checked if tokens are valid: true, expires at: 1759181436742
+[debug] [2025-09-29T21:11:15.337Z] >>> [apiv2][query] GET https://runtimeconfig.googleapis.com/v1beta1/projects/aura-e6045/configs [none]
+[debug] [2025-09-29T21:11:15.809Z] <<< [apiv2][status] GET https://runtimeconfig.googleapis.com/v1beta1/projects/aura-e6045/configs 200
+[debug] [2025-09-29T21:11:15.810Z] <<< [apiv2][body] GET https://runtimeconfig.googleapis.com/v1beta1/projects/aura-e6045/configs {}
+[debug] [2025-09-29T21:11:15.817Z] Validating nodejs source
+[debug] [2025-09-29T21:11:17.278Z] > [functions] package.json contents: {
+  "name": "functions",
+  "scripts": {
+    "lint": "eslint --ext .js,.ts .",
+    "build": "tsc",
+    "build:watch": "tsc --watch",
+    "serve": "npm run build && firebase emulators:start --only functions",
+    "shell": "npm run build && firebase functions:shell",
+    "start": "npm run shell",
+    "deploy": "firebase deploy --only functions",
+    "logs": "firebase functions:log"
+  },
+  "engines": {
+    "node": "22"
+  },
+  "main": "lib/index.js",
+  "dependencies": {
+    "firebase-admin": "^13.4.0",
+    "firebase-functions": "^6.4.0"
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^5.12.0",
+    "@typescript-eslint/parser": "^5.12.0",
+    "eslint": "^8.9.0",
+    "eslint-config-google": "^0.14.0",
+    "eslint-plugin-import": "^2.25.4",
+    "firebase-functions-test": "^3.1.0",
+    "typescript": "^5.7.3"
+  },
+  "private": true
+}
+[debug] [2025-09-29T21:11:17.279Z] Building nodejs source
+[info] i  functions: Loading and analyzing source code for codebase default to determine what to deploy 
+[debug] [2025-09-29T21:11:17.280Z] Could not find functions.yaml. Must use http discovery
+[debug] [2025-09-29T21:11:17.294Z] Found firebase-functions binary at 'C:\Users\moniq\Documents\Aura-Backend\Aura-Backend\node_modules\.bin\firebase-functions'
+[info] Serving at port 8802
+
+[debug] [2025-09-29T21:11:18.101Z] Got response from /__/functions.yaml {"endpoints":{"processRecurringTransactions":{"availableMemoryMb":null,"timeoutSeconds":null,"minInstances":null,"maxInstances":null,"ingressSettings":null,"concurrency":null,"serviceAccountEmail":null,"vpc":null,"platform":"gcfv2","labels":{},"scheduleTrigger":{"schedule":"every day 01:00","retryConfig":{},"timeZone":"America/Sao_Paulo"},"entryPoint":"processRecurringTransactions"}},"specVersion":"v1alpha1","requiredAPIs":[{"api":"cloudscheduler.googleapis.com","reason":"Needed for scheduled functions."}],"extensions":{}}
+[info] i  extensions: ensuring required API firebaseextensions.googleapis.com is enabled... 
+[debug] [2025-09-29T21:11:22.160Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-09-29T21:11:22.161Z] > authorizing via signed-in user (moniquead95@gmail.com)
+[debug] [2025-09-29T21:11:22.161Z] [iam] checking project aura-e6045 for permissions ["firebase.projects.get","firebaseextensions.instances.list"]
+[debug] [2025-09-29T21:11:22.161Z] Checked if tokens are valid: true, expires at: 1759181436742
+[debug] [2025-09-29T21:11:22.161Z] Checked if tokens are valid: true, expires at: 1759181436742
+[debug] [2025-09-29T21:11:22.162Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/aura-e6045:testIamPermissions [none]
+[debug] [2025-09-29T21:11:22.162Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/aura-e6045:testIamPermissions x-goog-quota-user=projects/aura-e6045
+[debug] [2025-09-29T21:11:22.162Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/aura-e6045:testIamPermissions {"permissions":["firebase.projects.get","firebaseextensions.instances.list"]}
+[debug] [2025-09-29T21:11:23.032Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/aura-e6045:testIamPermissions 200
+[debug] [2025-09-29T21:11:23.032Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/aura-e6045:testIamPermissions {"permissions":["firebase.projects.get","firebaseextensions.instances.list"]}
+[debug] [2025-09-29T21:11:23.033Z] Checked if tokens are valid: true, expires at: 1759181436742
+[debug] [2025-09-29T21:11:23.033Z] Checked if tokens are valid: true, expires at: 1759181436742
+[debug] [2025-09-29T21:11:23.034Z] >>> [apiv2][query] GET https://firebaseextensions.googleapis.com/v1beta/projects/aura-e6045/instances pageSize=100&pageToken=
+[debug] [2025-09-29T21:11:24.133Z] <<< [apiv2][status] GET https://firebaseextensions.googleapis.com/v1beta/projects/aura-e6045/instances 200
+[debug] [2025-09-29T21:11:24.133Z] <<< [apiv2][body] GET https://firebaseextensions.googleapis.com/v1beta/projects/aura-e6045/instances {}
+[info] i  functions: preparing . directory for uploading... 
+[info] i  functions: packaged C:\Users\moniq\Documents\Aura-Backend\Aura-Backend (95.12 KB) for uploading 
+[debug] [2025-09-29T21:11:24.211Z] Checked if tokens are valid: true, expires at: 1759181436742
+[debug] [2025-09-29T21:11:24.211Z] Checked if tokens are valid: true, expires at: 1759181436742
+[debug] [2025-09-29T21:11:24.211Z] >>> [apiv2][query] GET https://cloudfunctions.googleapis.com/v1/projects/aura-e6045/locations/-/functions [none]
+[debug] [2025-09-29T21:11:25.271Z] <<< [apiv2][status] GET https://cloudfunctions.googleapis.com/v1/projects/aura-e6045/locations/-/functions 200
+[debug] [2025-09-29T21:11:25.272Z] <<< [apiv2][body] GET https://cloudfunctions.googleapis.com/v1/projects/aura-e6045/locations/-/functions {}
+[debug] [2025-09-29T21:11:25.272Z] Checked if tokens are valid: true, expires at: 1759181436742
+[debug] [2025-09-29T21:11:25.272Z] Checked if tokens are valid: true, expires at: 1759181436742
+[debug] [2025-09-29T21:11:25.272Z] >>> [apiv2][query] GET https://cloudfunctions.googleapis.com/v2/projects/aura-e6045/locations/-/functions filter=environment%3D%22GEN_2%22
+[debug] [2025-09-29T21:11:26.489Z] <<< [apiv2][status] GET https://cloudfunctions.googleapis.com/v2/projects/aura-e6045/locations/-/functions 200
+[debug] [2025-09-29T21:11:26.490Z] <<< [apiv2][body] GET https://cloudfunctions.googleapis.com/v2/projects/aura-e6045/locations/-/functions {"functions":[{"name":"projects/aura-e6045/locations/us-central1/functions/processRecurringTransactions","buildConfig":{"build":"projects/733656810098/locations/us-central1/builds/153f907b-407b-4a2e-867b-8aafa81dd6ea","runtime":"nodejs22","entryPoint":"processRecurringTransactions","source":{"storageSource":{"bucket":"gcf-v2-sources-733656810098-us-central1","object":"processRecurringTransactions/function-source.zip","generation":"1759178022293406"}},"environmentVariables":{"GOOGLE_NODE_RUN_SCRIPTS":""},"dockerRepository":"projects/aura-e6045/locations/us-central1/repositories/gcf-artifacts","sourceProvenance":{"resolvedStorageSource":{"bucket":"gcf-v2-sources-733656810098-us-central1","object":"processRecurringTransactions/function-source.zip","generation":"1759178022293406"}},"dockerRegistry":"ARTIFACT_REGISTRY","serviceAccount":"projects/aura-e6045/serviceAccounts/733656810098-compute@developer.gserviceaccount.com","automaticUpdatePolicy":{}},"state":"FAILED","updateTime":"2025-09-29T20:34:02.056749358Z","labels":{"deployment-tool":"cli-firebase","deployment-scheduled":"true","firebase-functions-hash":"cad44508ec7f1f656ae0634103c4ee36b526111f"},"stateMessages":[{"severity":"ERROR","type":"CloudRunServiceNotFound","message":"Cloud Run service projects/aura-e6045/locations/us-central1/services/processrecurringtransactions for the function was not found. The function will not work correctly. Please redeploy."}],"environment":"GEN_2","url":"https://us-central1-aura-e6045.cloudfunctions.net/processRecurringTransactions","createTime":"2025-09-29T20:33:42.746303992Z","satisfiesPzi":true}]}
+[info] i  functions: ensuring required API cloudscheduler.googleapis.com is enabled... 
+[info] i  functions: ensuring required API run.googleapis.com is enabled... 
+[info] i  functions: ensuring required API eventarc.googleapis.com is enabled... 
+[info] i  functions: ensuring required API pubsub.googleapis.com is enabled... 
+[info] i  functions: ensuring required API storage.googleapis.com is enabled... 
+[info] i  functions: generating the service identity for pubsub.googleapis.com... 
+[debug] [2025-09-29T21:11:26.509Z] Checked if tokens are valid: true, expires at: 1759181436742
+[debug] [2025-09-29T21:11:26.509Z] Checked if tokens are valid: true, expires at: 1759181436742
+[info] i  functions: generating the service identity for eventarc.googleapis.com... 
+[debug] [2025-09-29T21:11:26.510Z] Checked if tokens are valid: true, expires at: 1759181436742
+[debug] [2025-09-29T21:11:26.510Z] Checked if tokens are valid: true, expires at: 1759181436742
+[debug] [2025-09-29T21:11:26.511Z] >>> [apiv2][query] POST https://serviceusage.googleapis.com/v1beta1/projects/733656810098/services/pubsub.googleapis.com:generateServiceIdentity [none]
+[debug] [2025-09-29T21:11:26.511Z] >>> [apiv2][(partial)header] POST https://serviceusage.googleapis.com/v1beta1/projects/733656810098/services/pubsub.googleapis.com:generateServiceIdentity x-goog-quota-user=projects/733656810098
+[debug] [2025-09-29T21:11:26.511Z] >>> [apiv2][body] POST https://serviceusage.googleapis.com/v1beta1/projects/733656810098/services/pubsub.googleapis.com:generateServiceIdentity {}
+[debug] [2025-09-29T21:11:26.513Z] >>> [apiv2][query] POST https://serviceusage.googleapis.com/v1beta1/projects/733656810098/services/eventarc.googleapis.com:generateServiceIdentity [none]
+[debug] [2025-09-29T21:11:26.513Z] >>> [apiv2][(partial)header] POST https://serviceusage.googleapis.com/v1beta1/projects/733656810098/services/eventarc.googleapis.com:generateServiceIdentity x-goog-quota-user=projects/733656810098
+[debug] [2025-09-29T21:11:26.513Z] >>> [apiv2][body] POST https://serviceusage.googleapis.com/v1beta1/projects/733656810098/services/eventarc.googleapis.com:generateServiceIdentity {}
+[debug] [2025-09-29T21:11:27.633Z] <<< [apiv2][status] POST https://serviceusage.googleapis.com/v1beta1/projects/733656810098/services/eventarc.googleapis.com:generateServiceIdentity 200
+[debug] [2025-09-29T21:11:27.633Z] <<< [apiv2][body] POST https://serviceusage.googleapis.com/v1beta1/projects/733656810098/services/eventarc.googleapis.com:generateServiceIdentity {"name":"operations/finished.DONE_OPERATION","done":true,"response":{"@type":"type.googleapis.com/google.api.serviceusage.v1beta1.ServiceIdentity","email":"service-733656810098@gcp-sa-eventarc.iam.gserviceaccount.com","uniqueId":"108377150894414574679"}}
+[debug] [2025-09-29T21:11:27.636Z] <<< [apiv2][status] POST https://serviceusage.googleapis.com/v1beta1/projects/733656810098/services/pubsub.googleapis.com:generateServiceIdentity 200
+[debug] [2025-09-29T21:11:27.636Z] <<< [apiv2][body] POST https://serviceusage.googleapis.com/v1beta1/projects/733656810098/services/pubsub.googleapis.com:generateServiceIdentity {"name":"operations/finished.DONE_OPERATION","done":true,"response":{"@type":"type.googleapis.com/google.api.serviceusage.v1beta1.ServiceIdentity","email":"service-733656810098@gcp-sa-pubsub.iam.gserviceaccount.com","uniqueId":"111599651625558352061"}}
+[debug] [2025-09-29T21:11:27.641Z] Checked if tokens are valid: true, expires at: 1759181436742
+[debug] [2025-09-29T21:11:27.641Z] Checked if tokens are valid: true, expires at: 1759181436742
+[debug] [2025-09-29T21:11:27.642Z] >>> [apiv2][query] GET https://cloudresourcemanager.googleapis.com/v1/projects/aura-e6045 [none]
+[debug] [2025-09-29T21:11:27.853Z] <<< [apiv2][status] GET https://cloudresourcemanager.googleapis.com/v1/projects/aura-e6045 200
+[debug] [2025-09-29T21:11:27.854Z] <<< [apiv2][body] GET https://cloudresourcemanager.googleapis.com/v1/projects/aura-e6045 {"projectNumber":"733656810098","projectId":"aura-e6045","lifecycleState":"ACTIVE","name":"Aura","labels":{"firebase":"enabled","firebase-core":"disabled"},"createTime":"2025-07-21T16:49:02.468354Z"}
+[debug] [2025-09-29T21:11:27.854Z] Checked if tokens are valid: true, expires at: 1759181436742
+[debug] [2025-09-29T21:11:27.854Z] Checked if tokens are valid: true, expires at: 1759181436742
+[debug] [2025-09-29T21:11:27.854Z] >>> [apiv2][query] GET https://compute.googleapis.com/compute/v1/projects/733656810098 [none]
+[debug] [2025-09-29T21:11:28.282Z] <<< [apiv2][status] GET https://compute.googleapis.com/compute/v1/projects/733656810098 403
+[debug] [2025-09-29T21:11:28.282Z] <<< [apiv2][body] GET https://compute.googleapis.com/compute/v1/projects/733656810098 {"error":{"code":403,"message":"Compute Engine API has not been used in project 733656810098 before or it is disabled. Enable it by visiting https://console.developers.google.com/apis/api/compute.googleapis.com/overview?project=733656810098 then retry. If you enabled this API recently, wait a few minutes for the action to propagate to our systems and retry.","errors":[{"message":"Compute Engine API has not been used in project 733656810098 before or it is disabled. Enable it by visiting https://console.developers.google.com/apis/api/compute.googleapis.com/overview?project=733656810098 then retry. If you enabled this API recently, wait a few minutes for the action to propagate to our systems and retry.","domain":"usageLimits","reason":"accessNotConfigured","extendedHelp":"https://console.developers.google.com"}],"status":"PERMISSION_DENIED","details":[{"@type":"type.googleapis.com/google.rpc.ErrorInfo","reason":"SERVICE_DISABLED","domain":"googleapis.com","metadata":{"service":"compute.googleapis.com","serviceTitle":"Compute Engine API","consumer":"projects/733656810098","activationUrl":"https://console.developers.google.com/apis/api/compute.googleapis.com/overview?project=733656810098","containerInfo":"733656810098"}},{"@type":"type.googleapis.com/google.rpc.LocalizedMessage","locale":"en-US","message":"Compute Engine API has not been used in project 733656810098 before or it is disabled. Enable it by visiting https://console.developers.google.com/apis/api/compute.googleapis.com/overview?project=733656810098 then retry. If you enabled this API recently, wait a few minutes for the action to propagate to our systems and retry."},{"@type":"type.googleapis.com/google.rpc.Help","links":[{"description":"Google developers console API activation","url":"https://console.developers.google.com/apis/api/compute.googleapis.com/overview?project=733656810098"}]}]}}
+[debug] [2025-09-29T21:11:28.285Z] unable to look up default compute service account. Falling back to 733656810098-compute@developer.gserviceaccount.com. Error: {"name":"FirebaseError","children":[],"context":{"body":{"error":{"code":403,"message":"Compute Engine API has not been used in project 733656810098 before or it is disabled. Enable it by visiting https://console.developers.google.com/apis/api/compute.googleapis.com/overview?project=733656810098 then retry. If you enabled this API recently, wait a few minutes for the action to propagate to our systems and retry.","errors":[{"message":"Compute Engine API has not been used in project 733656810098 before or it is disabled. Enable it by visiting https://console.developers.google.com/apis/api/compute.googleapis.com/overview?project=733656810098 then retry. If you enabled this API recently, wait a few minutes for the action to propagate to our systems and retry.","domain":"usageLimits","reason":"accessNotConfigured","extendedHelp":"https://console.developers.google.com"}],"status":"PERMISSION_DENIED","details":[{"@type":"type.googleapis.com/google.rpc.ErrorInfo","reason":"SERVICE_DISABLED","domain":"googleapis.com","metadata":{"service":"compute.googleapis.com","serviceTitle":"Compute Engine API","consumer":"projects/733656810098","activationUrl":"https://console.developers.google.com/apis/api/compute.googleapis.com/overview?project=733656810098","containerInfo":"733656810098"}},{"@type":"type.googleapis.com/google.rpc.LocalizedMessage","locale":"en-US","message":"Compute Engine API has not been used in project 733656810098 before or it is disabled. Enable it by visiting https://console.developers.google.com/apis/api/compute.googleapis.com/overview?project=733656810098 then retry. If you enabled this API recently, wait a few minutes for the action to propagate to our systems and retry."},{"@type":"type.googleapis.com/google.rpc.Help","links":[{"description":"Google developers console API activation","url":"https://console.developers.google.com/apis/api/compute.googleapis.com/overview?project=733656810098"}]}]}},"response":{"statusCode":403}},"exit":1,"message":"Request to https://compute.googleapis.com/compute/v1/projects/733656810098 had HTTP Error: 403, Compute Engine API has not been used in project 733656810098 before or it is disabled. Enable it by visiting https://console.developers.google.com/apis/api/compute.googleapis.com/overview?project=733656810098 then retry. If you enabled this API recently, wait a few minutes for the action to propagate to our systems and retry.","status":403}
+[debug] [2025-09-29T21:11:28.285Z] Checked if tokens are valid: true, expires at: 1759181436742
+[debug] [2025-09-29T21:11:28.285Z] Checked if tokens are valid: true, expires at: 1759181436742
+[debug] [2025-09-29T21:11:28.285Z] >>> [apiv2][query] GET https://compute.googleapis.com/compute/v1/projects/733656810098 [none]
+[debug] [2025-09-29T21:11:29.319Z] <<< [apiv2][status] GET https://compute.googleapis.com/compute/v1/projects/733656810098 403
+[debug] [2025-09-29T21:11:29.319Z] <<< [apiv2][body] GET https://compute.googleapis.com/compute/v1/projects/733656810098 {"error":{"code":403,"message":"Compute Engine API has not been used in project 733656810098 before or it is disabled. Enable it by visiting https://console.developers.google.com/apis/api/compute.googleapis.com/overview?project=733656810098 then retry. If you enabled this API recently, wait a few minutes for the action to propagate to our systems and retry.","errors":[{"message":"Compute Engine API has not been used in project 733656810098 before or it is disabled. Enable it by visiting https://console.developers.google.com/apis/api/compute.googleapis.com/overview?project=733656810098 then retry. If you enabled this API recently, wait a few minutes for the action to propagate to our systems and retry.","domain":"usageLimits","reason":"accessNotConfigured","extendedHelp":"https://console.developers.google.com"}],"status":"PERMISSION_DENIED","details":[{"@type":"type.googleapis.com/google.rpc.ErrorInfo","reason":"SERVICE_DISABLED","domain":"googleapis.com","metadata":{"serviceTitle":"Compute Engine API","consumer":"projects/733656810098","service":"compute.googleapis.com","activationUrl":"https://console.developers.google.com/apis/api/compute.googleapis.com/overview?project=733656810098","containerInfo":"733656810098"}},{"@type":"type.googleapis.com/google.rpc.LocalizedMessage","locale":"en-US","message":"Compute Engine API has not been used in project 733656810098 before or it is disabled. Enable it by visiting https://console.developers.google.com/apis/api/compute.googleapis.com/overview?project=733656810098 then retry. If you enabled this API recently, wait a few minutes for the action to propagate to our systems and retry."},{"@type":"type.googleapis.com/google.rpc.Help","links":[{"description":"Google developers console API activation","url":"https://console.developers.google.com/apis/api/compute.googleapis.com/overview?project=733656810098"}]}]}}
+[debug] [2025-09-29T21:11:29.319Z] unable to look up default compute service account. Falling back to 733656810098-compute@developer.gserviceaccount.com. Error: {"name":"FirebaseError","children":[],"context":{"body":{"error":{"code":403,"message":"Compute Engine API has not been used in project 733656810098 before or it is disabled. Enable it by visiting https://console.developers.google.com/apis/api/compute.googleapis.com/overview?project=733656810098 then retry. If you enabled this API recently, wait a few minutes for the action to propagate to our systems and retry.","errors":[{"message":"Compute Engine API has not been used in project 733656810098 before or it is disabled. Enable it by visiting https://console.developers.google.com/apis/api/compute.googleapis.com/overview?project=733656810098 then retry. If you enabled this API recently, wait a few minutes for the action to propagate to our systems and retry.","domain":"usageLimits","reason":"accessNotConfigured","extendedHelp":"https://console.developers.google.com"}],"status":"PERMISSION_DENIED","details":[{"@type":"type.googleapis.com/google.rpc.ErrorInfo","reason":"SERVICE_DISABLED","domain":"googleapis.com","metadata":{"serviceTitle":"Compute Engine API","consumer":"projects/733656810098","service":"compute.googleapis.com","activationUrl":"https://console.developers.google.com/apis/api/compute.googleapis.com/overview?project=733656810098","containerInfo":"733656810098"}},{"@type":"type.googleapis.com/google.rpc.LocalizedMessage","locale":"en-US","message":"Compute Engine API has not been used in project 733656810098 before or it is disabled. Enable it by visiting https://console.developers.google.com/apis/api/compute.googleapis.com/overview?project=733656810098 then retry. If you enabled this API recently, wait a few minutes for the action to propagate to our systems and retry."},{"@type":"type.googleapis.com/google.rpc.Help","links":[{"description":"Google developers console API activation","url":"https://console.developers.google.com/apis/api/compute.googleapis.com/overview?project=733656810098"}]}]}},"response":{"statusCode":403}},"exit":1,"message":"Request to https://compute.googleapis.com/compute/v1/projects/733656810098 had HTTP Error: 403, Compute Engine API has not been used in project 733656810098 before or it is disabled. Enable it by visiting https://console.developers.google.com/apis/api/compute.googleapis.com/overview?project=733656810098 then retry. If you enabled this API recently, wait a few minutes for the action to propagate to our systems and retry.","status":403}
+[debug] [2025-09-29T21:11:29.320Z] Checked if tokens are valid: true, expires at: 1759181436742
+[debug] [2025-09-29T21:11:29.320Z] Checked if tokens are valid: true, expires at: 1759181436742
+[debug] [2025-09-29T21:11:29.320Z] >>> [apiv2][query] GET https://cloudbilling.googleapis.com/v1/projects/aura-e6045/billingInfo [none]
+[debug] [2025-09-29T21:11:30.464Z] <<< [apiv2][status] GET https://cloudbilling.googleapis.com/v1/projects/aura-e6045/billingInfo 200
+[debug] [2025-09-29T21:11:30.465Z] <<< [apiv2][body] GET https://cloudbilling.googleapis.com/v1/projects/aura-e6045/billingInfo {"name":"projects/aura-e6045/billingInfo","projectId":"aura-e6045","billingAccountName":"billingAccounts/014DFB-EE4700-4E6436","billingEnabled":true}
+[info] i  functions: updating Node.js 22 (2nd Gen) function processRecurringTransactions(us-central1)... 
+[debug] [2025-09-29T21:11:30.479Z] Precondition failed. Cannot update a GCFv2 function without storage
+[debug] [2025-09-29T21:11:30.492Z] Total Function Deployment time: 3
+[debug] [2025-09-29T21:11:30.492Z] 1 Functions Deployed
+[debug] [2025-09-29T21:11:30.492Z] 1 Functions Errored
+[debug] [2025-09-29T21:11:30.492Z] 0 Function Deployments Aborted
+[debug] [2025-09-29T21:11:30.492Z] Average Function Deployment time: 1
+[info] 
+[info] Functions deploy had errors with the following functions:
+	processRecurringTransactions(us-central1)
+[debug] [2025-09-29T21:11:30.692Z] Checked if tokens are valid: true, expires at: 1759181436742
+[debug] [2025-09-29T21:11:30.692Z] Checked if tokens are valid: true, expires at: 1759181436742
+[debug] [2025-09-29T21:11:30.693Z] >>> [apiv2][query] GET https://artifactregistry.googleapis.com/v1/projects/aura-e6045/locations/us-central1/repositories/gcf-artifacts [none]
+[debug] [2025-09-29T21:11:31.813Z] <<< [apiv2][status] GET https://artifactregistry.googleapis.com/v1/projects/aura-e6045/locations/us-central1/repositories/gcf-artifacts 200
+[debug] [2025-09-29T21:11:31.813Z] <<< [apiv2][body] GET https://artifactregistry.googleapis.com/v1/projects/aura-e6045/locations/us-central1/repositories/gcf-artifacts {"name":"projects/aura-e6045/locations/us-central1/repositories/gcf-artifacts","format":"DOCKER","description":"This repository is created and used by Cloud Functions for storing function docker images.","labels":{"goog-managed-by":"cloudfunctions"},"createTime":"2025-07-22T17:24:44.006894Z","updateTime":"2025-09-29T20:33:46.292642Z","mode":"STANDARD_REPOSITORY","cleanupPolicies":{"firebase-functions-cleanup":{"id":"firebase-functions-cleanup","action":"DELETE","condition":{"tagState":"ANY","olderThan":"86400s"}}},"vulnerabilityScanningConfig":{"lastEnableTime":"2025-07-22T17:24:35.678757594Z","enablementState":"SCANNING_DISABLED","enablementStateReason":"API containerscanning.googleapis.com is not enabled."},"satisfiesPzi":true,"registryUri":"us-central1-docker.pkg.dev/aura-e6045/gcf-artifacts"}
+[debug] [2025-09-29T21:11:31.813Z] Functions deploy failed.
+[debug] [2025-09-29T21:11:31.813Z] {}
+[debug] [2025-09-29T21:11:31.892Z] Error: Precondition failed
+    at Fabricator.updateV2Function (C:\Users\moniq\AppData\Roaming\npm\node_modules\firebase-tools\lib\deploy\functions\release\fabricator.js:394:19)
+    at Fabricator.updateEndpoint (C:\Users\moniq\AppData\Roaming\npm\node_modules\firebase-tools\lib\deploy\functions\release\fabricator.js:160:24)
+    at C:\Users\moniq\AppData\Roaming\npm\node_modules\firebase-tools\lib\deploy\functions\release\fabricator.js:110:71
+    at handle (C:\Users\moniq\AppData\Roaming\npm\node_modules\firebase-tools\lib\deploy\functions\release\fabricator.js:89:23)
+    at Fabricator.applyChangeset (C:\Users\moniq\AppData\Roaming\npm\node_modules\firebase-tools\lib\deploy\functions\release\fabricator.js:110:26)
+    at C:\Users\moniq\AppData\Roaming\npm\node_modules\firebase-tools\lib\deploy\functions\release\fabricator.js:69:40
+    at Array.map (<anonymous>)
+    at Fabricator.applyPlan (C:\Users\moniq\AppData\Roaming\npm\node_modules\firebase-tools\lib\deploy\functions\release\fabricator.js:68:54)
+    at release (C:\Users\moniq\AppData\Roaming\npm\node_modules\firebase-tools\lib\deploy\functions\release\index.js:76:31)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+[error] 
+[error] Error: There was an error deploying functions

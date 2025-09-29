@@ -1,0 +1,19 @@
+firebase deploy --only firestore:rulerules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // Regra para a coleção de parcerias
+    // Permite leitura e escrita apenas se o ID do utilizador estiver na lista de membros.
+    match /partnerships/{partnershipId} {
+      allow read, write, delete: if request.auth != null && request.auth.uid in resource.data.members;
+    }
+
+    // Regra para os dados privados de cada utilizador
+    // Permite que um utilizador leia e escreva apenas nos seus próprios documentos.
+    match /users/{userId}/{document=**} {
+      allow read, write: if request.auth != null && request.auth.uid == userId;
+    }
+
+  }
+}
